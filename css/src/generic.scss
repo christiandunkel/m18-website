@@ -76,8 +76,8 @@ html {
     }
 }
 
-$container-width: 1920px;
 $content-width: 1200px;
+$content-padding: 5rem;
 
 body {
     position: relative;
@@ -87,24 +87,97 @@ body {
 }
 
 #header, #article, #footer {
-    max-width: 1920px; width: 100%;
+    width: 100%;
     @include animation(fade-in 1s);
 }
 
 #header {
-    width: 100%; margin-bottom: 5rem; padding: 0 5rem;
+    max-width: $content-width + 150; width: 100%; margin: 0 auto 5rem auto; padding: $content-padding $content-padding 0 $content-padding;
     text-align: center;
     
-    .main-banner {
-        display: inline-block;
-        max-width: $container-width; width: 100%;
-        border-bottom: .4rem solid $color-main;
-        @include border-radius(.4rem);
+    
+    
+    /* LOGO */
+    
+    .logo {
+        margin-bottom: 5rem;
+        text-align: left; 
+        
+        .link {
+            display: inline-block;
+            margin-right: .3em;
+            font-size: 5rem; line-height: 1em; color: $color-main; text-decoration: none; font-weight: bold;
+            @include user-select(none);
+            
+            span {
+                display: inline-block;
+                margin-left: .1em; padding: .1em .25em;
+                background-color: $color-main;
+                color: $color-aspect;
+                @include border-radius(.3rem);
+            }
+
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                
+                span {
+                    background-color: $color-aspect;
+                    color: $color-main;
+                }
+            }
+        }
+        
+        .text {
+            display: inline-block;
+            margin-top: .7rem;
+            font-size: 2rem; line-height: 1em; color: $color-main;
+        }
+    }
+    
+    
+    
+    /* BANNER */
+    
+    .banner {
+        width: 100%;
+        @include border-radius(1rem 1rem 0 0);
+    }
+    
+    
+    
+    /* NAVIGATION */
+
+    #nav {
+        width: 100%;
+        background-color: $color-main; border-top: .5rem solid $color-aspect;
+        text-align: left;
+
+        ul {
+            width: 100%;
+
+            > li {
+                list-style: none;
+                display: inline-block;
+
+                > a {
+                    display: inline-block;
+                    padding: 1.2rem 1.5rem;
+                    font-size: 2.4rem; line-height: 1em; color: $color-aspect; text-decoration: none;
+                    
+                    &:hover,
+                    &:focus {
+                        background-color: $color-aspect;
+                        color: $color-main;
+                    }
+                }
+            }
+        }
     }
 }
 
 #article {
-    max-width: $content-width; width: 100%; margin: 0 auto; padding: 4rem;
+    max-width: $content-width; width: 100%; margin: 0 auto; padding: $content-padding;
     background: white;
 
     main, aside {
@@ -157,14 +230,12 @@ body {
     }
 
     h1 {
-        margin-top: 0; padding: 0 .25em;
-        background-color: $color-main;
-        font-size: 5rem; font-weight: bold; color: $color-aspect;
-        @include border-radius(.3rem);
+        margin-top: 0;
+        font-size: 4.5rem; font-weight: bold;
     }
 
     h2 {
-        font-size: 3.6rem; font-weight: 700;
+        font-size: 3.6rem; font-weight: bold;
     }
 
     h3 {
@@ -264,22 +335,27 @@ body {
 }
 
 #footer {
-    width: 100%; margin-top: 5rem; padding-top: 1rem;
+    width: 100%; margin-top: 5rem; padding-top: .5rem;
     background-color: $color-main;
-    text-align: center;
+    color: $color-aspect; text-align: center;
+        
+    .highlight {
+        width: 100%;
+        background-color: $color-aspect;
+        color: $color-main; text-align: center;
+    }
     
     .inner {
         display: inline-block;
         max-width: $content-width; width: 100%; padding: 5rem;
-        border-top: .5rem solid $color-aspect;
-        color: $color-aspect; text-align: left;
+        text-align: left;
     
         .slogan {
             font-size: 4rem; line-height: 1.6em; font-weight: bold;
 
             .hashtag {
-                padding: 0 .2em;
-                background-color: $color-main; border: .5rem solid $color-aspect;
+                margin: 0 .13em 0.8em; padding: 0 .2em;
+                background-color: $color-main; border: .12em solid transparent;
                 color: $color-aspect; text-decoration: none;
                 @include border-radius(.3rem);
                 @include user-select(none);
@@ -287,8 +363,44 @@ body {
                 &:hover,
                 &:focus {
                     text-decoration: none;
-                    background-color: $color-aspect;
+                    background-color: $color-aspect; border-color: $color-main;
                     color: $color-main;
+                }
+            }
+        }
+        
+        hr {
+            margin: 7rem 0 3rem 0;
+            border: solid $color-aspect; border-width: .2rem 0 0 0;
+            @include border-radius(.3rem);
+        }
+        
+        .links {
+            
+            > .list:last-child {
+                margin-right: 0;
+            }
+            
+            .list {
+                display: inline-block; vertical-align: top;
+                margin: 4rem 7rem 4rem 0; padding-left: 2rem;
+            
+                .headline {
+                    list-style: none;
+                    font-size: 2.5rem; line-height: 1.4em; font-weight: bold;
+                }
+
+                .link {
+                    font-size: 1.8rem; line-height: 1.4em;
+
+                    a {
+                        font-weight: normal; color: currentColor; text-decoration: none;
+                        
+                        &:hover,
+                        &:focus {
+                            text-decoration: underline;
+                        }
+                    }
                 }
             }
         }
