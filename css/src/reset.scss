@@ -1,0 +1,185 @@
+/* PLACEHOLDER */
+
+// IE 10+
+:-ms-input-placeholder {
+    -ms-user-select: none;
+    user-select: none;
+    color: #484848;
+}
+
+// Microsoft Edge
+::-ms-input-placeholder {
+    -ms-user-select: none;
+    user-select: none;
+    color: #484848;
+}
+
+// Firefox 19+
+::-moz-placeholder {
+    -moz-user-select: none;
+    user-select: none;
+    color: #484848;
+}
+
+// Chrome / Opera / Safari
+::-webkit-input-placeholder {
+    -webkit-user-select: none;
+    user-select: none;
+    color: #484848;
+}
+
+// Firefox 18-
+:-moz-placeholder {
+    -moz-user-select: none;
+    user-select: none;
+    color: #484848;
+}
+
+
+
+/* BLOCK ELEMENTS */
+
+div, span, h1, h2, h3, h4, h5, h6, p, pre, a, del, img, ins, small, strike, strong, b, u, i, center, ol, ul, li, form, label, table, caption, tbody, tfoot, thead, tr, th, td, figure, figcaption, header, main, footer, menu, nav, input {
+    font: inherit; font-size: 100%;
+}
+
+div, span, h1, h2, h3, h4, p, pre, a, del, img, ins, small, strike, strong, b, u, i, center, ol, ul, li, form, label, table, caption, tbody, tfoot, thead, tr, th, td, figure, figcaption, header, main, footer, menu, nav, input {
+    vertical-align: baseline;
+	margin: 0; padding: 0;
+	border: 0;
+}
+
+article, aside, details, figcaption, figure, header, main, footer, hgroup, menu, nav, section {
+	display: block;
+}
+
+blockquote, q {
+    
+    &:before, &:after {
+	   content: '';
+	   content: none;
+    }
+}
+
+
+
+/* TABLES */
+
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-color: transparent;
+}
+
+// areas
+
+thead, tbody, tfoot {
+    vertical-align: middle;
+    border-color: transparent;
+}
+
+thead {
+    display: table-header-group;
+}
+
+tbody {
+    display: table-row-group;
+}
+
+tfoot {
+    display: table-footer-group;
+}
+
+// rows and cells
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: transparent;
+}
+
+td {
+    display: table-cell;
+    vertical-align: inherit;
+    border-color: transparent;
+}
+
+th {
+    display: table-cell;
+    vertical-align: inherit; border-color: transparent;
+    font-weight: normal; text-align: center;
+}
+
+
+
+/* INPUTS */
+
+textarea {
+    font-size: 1rem; line-height: 1.4rem;
+    font-family: inherit;
+}
+
+input {
+    font-family: inherit;
+    
+    &[type="hidden"] {
+        display: none;
+    }
+    
+    &[type="submit"] {
+        background-color: transparent;
+        cursor: pointer;
+    }
+    
+}
+
+button {
+    width: auto; margin: 0; padding: 0;
+    background: transparent; border: none; overflow: visible; cursor: pointer;
+    color: inherit; font: inherit; line-height: normal;
+    @include appearance(none);
+    
+    &::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
+}
+
+button,
+input[type="submit"] {
+    @include transition(.3s, outline 0s);
+}
+
+
+
+/* TEXT FORMATTING */
+
+b {
+    font-weight: 700;
+}
+
+u {
+    text-decoration: underline;
+}
+
+i {
+    font-style: italic;
+}
+
+strike,
+del {
+    text-decoration: line-through;
+}
+
+small {
+    font-size: .7em;
+}
+
+ul {
+    list-style: outside;
+}
+        
+ol {
+    list-style: outside decimal;
+}

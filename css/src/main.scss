@@ -1,0 +1,49 @@
+/* DEVICE MEDIA QUERIES */
+
+@mixin ON_DESKTOP {
+    @media (min-width: 801px) {
+        @content;
+    }
+}
+
+@mixin ON_MOBILE {
+    @media (max-width: 800px) {
+        @content;
+    }
+}
+
+// below most smallest screen devices 
+@mixin ON_MIN_SCREEN {
+    @media (max-width: 300px) {
+        @content;
+    }
+}
+
+
+
+/* PREFIXES FOR CSS ATTRIBUTES*/
+
+@import 'power-prefixer';
+
+
+
+/* STATIC PROPERTIES */
+
+// fonts
+$font-main: 'Noto Sans', 'Roboto', 'Arial', sans-serif;
+
+// area colors
+$color-main: black;
+$color-aspect: #ffff00;
+
+// text colors
+$color-text: #1d1d1d;
+$color-link: #986300;
+$color-link-hover: #bf7d00;
+
+
+
+/* SCSS FILES */
+
+@import 'reset';
+@import 'generic';

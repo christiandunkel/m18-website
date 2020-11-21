@@ -1,0 +1,296 @@
+/* GENERIC ANIMATIONS */
+
+@include keyframes(fade-in) {
+    0% {
+        pointer-events: none;
+        opacity: 0;
+    }
+    100% {
+        pointer-events: auto;
+        opacity: 1;
+    }
+}
+
+@include keyframes(fade-out) {
+    0% {
+        pointer-events: auto;
+        opacity: 1;
+    }
+    100% {
+        pointer-events: none;
+        opacity: 0;
+    }
+}
+
+@include keyframes(hidden) {
+    0%, 100% {
+        pointer-events: none;
+        opacity: 0;
+    }
+}
+
+
+
+
+
+/* GENERIC ELEMENTS */
+
+*,
+*:after,
+*:before {
+    @include box-sizing(border-box);
+}
+
+html {
+    -ms-text-size-adjust:           none;
+    -webkit-text-size-adjust:       none;                   // prevent resizing text to fit
+    -webkit-touch-callout:          none;                   // safari: prevent callout to copy image, etc when tap hold
+    -webkit-tap-highlight-color:    transparent;            // prevent tap highlight color / shadow
+    -webkit-tap-highlight-color:    rgba(0,0,0,0);
+    -moz-osx-font-smoothing:        auto;                   // firefox: font smoothing 
+    -webkit-font-smoothing:         subpixel-antialiased;   // chrome, opera, safari: font smoothing
+    font-smooth:                    always;
+    scroll-behavior:                smooth;                 // prevent instant scroll, enable smooth movement
+    
+    min-height: 100%;
+    background-color: #f8f8f8;
+    font-family: $font-main;
+    
+    // relative to all font-sizes on the page
+    font-size: 10px;
+    
+    @media (max-width: 1000px) {
+        font-size: 9px;
+    }
+    
+    @media (max-width: 700px) {
+        font-size: 8px;
+    }
+    
+    @media (max-width: 400px) {
+        font-size: 7px;
+    }
+    
+    @media (max-width: 300px) {
+        font-size: 6px;
+    }
+}
+
+$container-width: 1920px;
+$content-width: 1200px;
+
+body {
+    position: relative;
+    min-height: 100%; margin: 0 auto;
+    overflow-x: hidden;
+    color: $color-text; font-size: 0;
+}
+
+#header, #article, #footer {
+    max-width: 1920px; width: 100%;
+    @include animation(fade-in 1s);
+}
+
+#header {
+    width: 100%; margin-bottom: 5rem; padding: 0 5rem;
+    text-align: center;
+    
+    .main-banner {
+        display: inline-block;
+        max-width: $container-width; width: 100%;
+        border-bottom: .4rem solid $color-main;
+        @include border-radius(.4rem);
+    }
+}
+
+#article {
+    max-width: $content-width; width: 100%; margin: 0 auto; padding: 4rem;
+    background: white;
+
+    main, aside {
+        
+        > *:first-child,
+        > script:first-child + *,
+        > style:first-child + * {
+            margin-top: 0 !important;
+        }
+
+        > *:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+    
+    
+    #main {
+        display: inline-block; vertical-align: top;
+        width: 66%;
+    }
+    
+    #aside {
+        display: inline-block; vertical-align: top;
+        width: 27.5%; margin-left: 6.49%;
+    }
+    
+    @include ON_MOBILE {
+        
+        #main {
+            width: 100%;
+        }
+        
+        #aside {
+            width: 100%; margin: 5rem 0 0 0;
+        }
+    }
+    
+    
+    
+    
+    
+    /* TEXT STRUCTURE ELEMENTS */
+
+    h1, h2, h3, h4 {
+        line-height: 1.5em;
+    }
+
+    h2, h3, h4 {
+        margin: 1.8em 0 1em 0;
+    }
+
+    h1 {
+        margin-top: 0; padding: 0 .25em;
+        background-color: $color-main;
+        font-size: 5rem; font-weight: bold; color: $color-aspect;
+        @include border-radius(.3rem);
+    }
+
+    h2 {
+        font-size: 3.6rem; font-weight: 700;
+    }
+
+    h3 {
+        font-size: 2.9rem;
+    }
+
+    h4 {
+        font-size: 2.45rem;
+    }
+
+    p {
+        margin: .9em 0;
+        font-size: 2rem; line-height: 1.6em; color: $color-text;
+    }
+
+    hr {
+        margin: 3rem auto;
+        border: solid currentColor; border-width: .4rem 0 0 0;
+        opacity: .2;
+        @include border-radius(.5rem);
+
+        + * {
+            margin-top: 3rem;
+        }
+    }
+    
+    
+    
+    /* LISTS */
+
+    ul, ol {
+        margin: 2rem 0;
+
+        li {
+            padding: .5rem 0 0 0;
+            font-size: 2rem; line-height: 1.6em;
+        }
+
+        > li > ul,
+        > li > ol {
+            margin: .3rem 0;
+        }
+    }
+
+    ul {
+        padding: 0 0 0 3rem;
+    }
+
+    ol {
+        padding: 0 0 0 2rem;
+        counter-reset: ol-counter;
+
+        > li {
+            display: block;
+            counter-increment: ol-counter;
+
+            &:before {
+                content: counter(ol-counter) ".";
+                margin: 0 .5em;
+                color: inherit; font-size: .9em;
+            }
+        }
+    }
+    
+    
+    
+    /* LINKS & BUTTONS */
+
+    a {
+        cursor: pointer;
+        text-decoration: none;
+        @include transition(.15s);
+
+        &.link,
+        li &,
+        p &,
+        td &,
+        th &,
+        figcaption & {
+            color: $color-link; font-weight: 700;
+
+            &:hover {
+                color: $color-link-hover; text-decoration: underline;
+            }
+        }
+    }
+
+    a, button {
+
+        &:focus {
+            outline-width: .3rem;
+            outline-offset: .1rem;
+            outline-style: dashed;
+            outline-color: currentColor;
+        }
+    }
+}
+
+#footer {
+    width: 100%; margin-top: 5rem; padding-top: 1rem;
+    background-color: $color-main;
+    text-align: center;
+    
+    .inner {
+        display: inline-block;
+        max-width: $content-width; width: 100%; padding: 5rem;
+        border-top: .5rem solid $color-aspect;
+        color: $color-aspect; text-align: left;
+    
+        .slogan {
+            font-size: 4rem; line-height: 1.6em; font-weight: bold;
+
+            .hashtag {
+                padding: 0 .2em;
+                background-color: $color-main; border: .5rem solid $color-aspect;
+                color: $color-aspect; text-decoration: none;
+                @include border-radius(.3rem);
+                @include user-select(none);
+                
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                    background-color: $color-aspect;
+                    color: $color-main;
+                }
+            }
+        }
+    }
+}
