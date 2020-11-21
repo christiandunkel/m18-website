@@ -33,6 +33,20 @@
 
 
 
+/* LANGUAGE MANAGEMENT */
+
+html[lang="en"] *[lang]:not([lang="en"]) {
+    display: none !important;
+}
+
+html[lang="de"] *[lang]:not([lang="de"]) {
+    display: none !important;
+}
+
+
+
+
+
 /* GENERIC ELEMENTS */
 
 *,
@@ -92,46 +106,93 @@ body {
 }
 
 #header {
-    max-width: $content-width + 150; width: 100%; margin: 0 auto 5rem auto; padding: $content-padding $content-padding 0 $content-padding;
+    width: 100%; margin: 0 auto;
+    background-color: $color-aspect;
     text-align: center;
     
     
     
     /* LOGO */
     
-    .logo {
-        margin-bottom: 5rem;
-        text-align: left; 
-        
-        .link {
+    .highlight {
+        display: inline-block;
+        max-width: $content-width + 150; width: 100%; padding: $content-padding/2 $content-padding;
+        text-align: left;
+    
+        .logo {
             display: inline-block;
-            margin-right: .3em;
-            font-size: 5rem; line-height: 1em; color: $color-main; text-decoration: none; font-weight: bold;
-            @include user-select(none);
-            
-            span {
-                display: inline-block;
-                margin-left: .1em; padding: .1em .25em;
-                background-color: $color-main;
-                color: $color-aspect;
-                @include border-radius(.3rem);
-            }
 
-            &:hover,
-            &:focus {
-                text-decoration: none;
-                
+            .link {
+                display: inline-block;
+                margin-right: .3em; padding: .5rem;
+                font-size: 5rem; line-height: 1em; color: $color-main; text-decoration: none; font-weight: bold;
+                @include user-select(none);
+
                 span {
-                    background-color: $color-aspect;
-                    color: $color-main;
+                    display: inline-block;
+                    margin-left: .1em; padding: .1em .15em;
+                    background-color: $color-main; border: .5rem solid $color-main;
+                    color: $color-aspect;
+                    @include border-radius(.3rem);
+                }
+
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+
+                    span {
+                        background-color: $color-aspect;
+                        color: $color-main;
+                    }
                 }
             }
+
+            .text {
+                display: inline-block;
+                padding: .5rem;
+                font-size: 1.8rem; line-height: 1em; color: $color-main;
+            }
         }
-        
-        .text {
-            display: inline-block;
-            margin-top: .7rem;
-            font-size: 2rem; line-height: 1em; color: $color-main;
+
+
+
+        .language-selection {
+            float: right;
+            list-style: none;
+            margin: 1rem 0 0 4rem;
+            text-align: left;
+
+            > li {
+                display: inline-block;
+                margin: .3rem .7rem 0 .7rem;
+                font-size: 1.8rem;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+                
+                &:last-child {
+                    margin-right: 0;
+                }
+                
+                .lang-select-btn {
+                    min-width: 12rem; padding: .1em .25em;
+                    border: .4rem solid transparent;
+                    font-size: 2.2rem; font-weight: normal; text-align: center;
+                    @include border-radius(.4rem);
+                    
+                    &:hover,
+                    &:focus {
+                        border-color: $color-main;
+                    }
+
+                    html[lang="de"] &[set-lang="de"],
+                    html[lang="en"] &[set-lang="en"] {
+                        background-color: $color-main; cursor: auto;
+                        color: $color-aspect; font-weight: bold;
+                    }
+                }
+            }
         }
     }
     
@@ -141,35 +202,45 @@ body {
     
     .banner {
         width: 100%;
-        @include border-radius(1rem 1rem 0 0);
     }
+}
     
     
     
-    /* NAVIGATION */
+/* NAVIGATION */
 
-    #nav {
-        width: 100%;
-        background-color: $color-main; border-top: .5rem solid $color-aspect;
+#nav {
+    width: 100%; margin-bottom: $content-padding; padding: 1rem 0;
+    background-color: $color-main;
+    text-align: center;
+
+    ul {
+        display: inline-block;
+        max-width: $content-width + 150; width: 100%; padding: 0 $content-padding;
         text-align: left;
 
-        ul {
-            width: 100%;
+        > li {
+            list-style: none;
+            display: inline-block;
 
-            > li {
-                list-style: none;
+            > a {
                 display: inline-block;
-
-                > a {
-                    display: inline-block;
-                    padding: 1.2rem 1.5rem;
-                    font-size: 2.4rem; line-height: 1em; color: $color-aspect; text-decoration: none;
+                padding: 1.5rem 1.8rem;
+                font-size: 2.4rem; line-height: 1em; color: $color-aspect; text-decoration: none;
+                
+                &.home-btn {
                     
-                    &:hover,
-                    &:focus {
-                        background-color: $color-aspect;
-                        color: $color-main;
+                    svg {
+                        display: inline-block; vertical-align: baseline;
+                        width: 1em; height: 1em;
+                        fill: currentColor;
                     }
+                }
+
+                &:hover,
+                &:focus {
+                    background-color: $color-aspect;
+                    color: $color-main;
                 }
             }
         }
@@ -211,7 +282,7 @@ body {
         }
         
         #aside {
-            width: 100%; margin: 5rem 0 0 0;
+            width: 100%; margin: $content-padding 0 0 0;
         }
     }
     
@@ -305,32 +376,27 @@ body {
     /* LINKS & BUTTONS */
 
     a {
+        padding: .1em .2em;
         cursor: pointer;
-        text-decoration: none;
+        background-color: $color-main; border: .1em solid $color-main;
+        color: $color-aspect; font-weight: bold; text-decoration: none;
         @include transition(.15s);
 
-        &.link,
-        li &,
-        p &,
-        td &,
-        th &,
-        figcaption & {
-            color: $color-link; font-weight: 700;
-
-            &:hover {
-                color: $color-link-hover; text-decoration: underline;
-            }
+        &:hover,
+        &:focus {
+            background-color: $color-aspect;
+            color: $color-main; text-decoration: none;
         }
     }
+}
 
-    a, button {
+a, button {
 
-        &:focus {
-            outline-width: .3rem;
-            outline-offset: .1rem;
-            outline-style: dashed;
-            outline-color: currentColor;
-        }
+    &:focus {
+        outline-width: .3rem;
+        outline-offset: .1rem;
+        outline-style: dashed;
+        outline-color: currentColor;
     }
 }
 
@@ -347,10 +413,14 @@ body {
     
     .inner {
         display: inline-block;
-        max-width: $content-width; width: 100%; padding: 5rem;
+        max-width: $content-width; width: 100%; padding: $content-padding;
         text-align: left;
+        
+        $margin-vertical: 1.5rem;
     
         .slogan {
+            display: inline-block;
+            margin: $margin-vertical 0;
             font-size: 4rem; line-height: 1.6em; font-weight: bold;
 
             .hashtag {
@@ -369,10 +439,38 @@ body {
             }
         }
         
-        hr {
-            margin: 7rem 0 3rem 0;
-            border: solid $color-aspect; border-width: .2rem 0 0 0;
-            @include border-radius(.3rem);
+        .social-media {
+            float: right;
+            margin: $margin-vertical 0 $margin-vertical 6rem;
+            
+            li {
+                list-style: none;
+                display: inline-block;
+                margin-left: 1rem;
+                
+                a {
+                    display: inline-block; position: relative;
+                    width: 6.4rem; height: 6.4rem;
+                    color: black;
+                    @include border-radius(.5rem);
+                    
+                    svg {
+                        position: absolute; top: 50%; left: 50%;
+                        width: 5rem; height: 5rem;
+                        fill: $color-main;
+                        @include transform(translate(-50%,-50%));
+                    }
+                    
+                    &:hover,
+                    &:focus {
+                        background-color: $color-main;
+                        
+                        svg {
+                            fill: $color-aspect;
+                        }
+                    }
+                }
+            }
         }
         
         .links {
@@ -387,6 +485,7 @@ body {
             
                 .headline {
                     list-style: none;
+                    margin-bottom: 1rem;
                     font-size: 2.5rem; line-height: 1.4em; font-weight: bold;
                 }
 
