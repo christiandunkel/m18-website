@@ -223,7 +223,7 @@ body {
     background-color: $color-main;
     text-align: center;
 
-    ul {
+    > ul {
         display: inline-block;
         max-width: $content-width + 150; width: 100%; padding: 0 $header-padding;
         text-align: left;
@@ -235,6 +235,7 @@ body {
             > a {
                 display: inline-block;
                 padding: 1.5rem 1.8rem;
+                border-right: .15rem dashed $color-aspect;
                 font-size: 2.4rem; line-height: 1em; color: $color-aspect; text-decoration: none;
                 
                 &.home-btn {
@@ -281,7 +282,8 @@ body {
     
     #aside {
         display: inline-block; vertical-align: top;
-        width: 27.5%; margin-left: 6.49%;
+        width: 27.5%; margin-left: 3.49%; padding-left: 3%;
+        border-left: .3rem dashed #e3e3e3;
     }
     
     @include ON_MOBILE {
