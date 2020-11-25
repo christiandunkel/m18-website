@@ -218,6 +218,30 @@ body {
     
 /* NAVIGATION */
 
+.fixed-center {
+    position: fixed; top: -5px; left: 50%; z-index: 10000;
+    max-width: $content-width + 150; width: 100%; height: 1px;
+    @include transform(translate(-50%,0));
+
+    // button that appears on first TAB if user navigates using TAB key
+    #skip-nav {
+        display: inline-block; position: absolute; bottom: 0; left: 2rem;
+        padding: .75em 1.25em;
+        background-color: $color-aspect; border: .3rem solid $color-main; white-space: nowrap;
+        color: $color-main; font-size: 1.8rem; line-height: 1.5em; text-decoration: none; font-weight: bold;
+        @include border-radius(.4rem);
+
+        &:focus {
+            bottom: -6rem;
+            @include transform(translate(0,100%));
+        }
+    }
+
+    @include ON_MOBILE {
+        display: none;
+    }
+}
+
 #nav {
     position: relative; z-index: 9999;
     width: 100%; margin-bottom: $content-padding;
