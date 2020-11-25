@@ -388,7 +388,7 @@ body {
     #aside {
         display: inline-block; vertical-align: top;
         width: 27.5%; margin-left: 3.49%; padding-left: 3%;
-        border-left: .3rem dashed #e3e3e3;
+        border: dashed #e3e3e3; border-width: 0 0 0 .3rem;
     }
     
     @include ON_MOBILE {
@@ -398,7 +398,8 @@ body {
         }
         
         #aside {
-            width: 100%; margin: $content-padding 0 0 0;
+            width: 100%; margin: $content-padding 0 0 0; padding: $content-padding 0 0 0;
+            border-width: .5rem 0 0 0;
         }
     }
     
