@@ -219,24 +219,32 @@ body {
 /* NAVIGATION */
 
 #nav {
-    width: 100%; margin-bottom: $content-padding; padding: 1rem 0;
-    background-color: $color-main;
+    position: relative; z-index: 9999;
+    width: 100%; margin-bottom: $content-padding;
+    background-color: $color-main; border-top: .5rem solid $color-aspect;
     text-align: center;
+    @include user-select(none);
 
-    > ul {
-        display: inline-block;
+    > .main {
+        display: inline-block; position: relative;
         max-width: $content-width + 150; width: 100%; padding: 0 $header-padding;
         text-align: left;
 
         > li {
+            position: relative; vertical-align: bottom;
             list-style: none;
             display: inline-block;
 
             > a {
-                display: inline-block;
-                padding: 1.5rem 1.8rem;
-                border-right: .15rem dashed $color-aspect;
+                display: inline-block; position: relative; z-index: 3; vertical-align: bottom;
+                padding: 2rem 1.8rem;
                 font-size: 2.4rem; line-height: 1em; color: $color-aspect; text-decoration: none;
+
+                &:hover,
+                &:focus {
+                    background-color: $color-aspect; outline: none;
+                    color: $color-main;
+                }
                 
                 &.home-btn {
                     
@@ -246,14 +254,74 @@ body {
                         fill: currentColor;
                     }
                 }
-
+            }
+        }
+        
+        > li:hover,
+        > li:focus-within {
+            > a {
+                background-color: $color-aspect;
+                color: $color-main;
+            }
+        }
+    }
+    
+    // general properties of a dropdown menu
+    .dropdown {
+        position: absolute;
+        max-width: 30rem; min-width: 25rem; width: 0; max-height: 80rem; height: 0; padding: 0;
+        background-color: $color-aspect; visibility: hidden; opacity: 0;
+        overflow: hidden;
+        @include box-shadow(0 0 .6rem rgba(0,0,0,.2));
+        @include transition(0s .2s, opacity 0s);
+        
+        &.depth-1 {
+            top: 100%; left: 0; z-index: 1;
+        }
+        
+        &.depth-2 {
+            top: 0; left: 100%; z-index: 2;
+        }
+        
+        li {
+            position: relative;
+            list-style: none;
+            margin: 0; padding: 0;
+        
+            a {
+                display: inline-block;
+                width: 100%; padding: 1.2rem;
+                font-size: 1.7rem; line-height: 1.3em; color: $color-main; text-decoration: none;
+                
                 &:hover,
                 &:focus {
-                    background-color: $color-aspect;
-                    color: $color-main;
+                    background-color: $color-main; outline: none;
+                    color: $color-aspect;
                 }
             }
         }
+    }
+    
+    @mixin dropdown-visible {
+        width: auto; height: auto; padding: .5rem 0;
+        visibility: visible; opacity: 1;
+        overflow: inherit;
+        @include transition(0s);
+    }
+    
+    // trigger the showing of a dropdown menu
+    a:hover ~ .dropdown,
+    a:focus ~ .dropdown,
+    button:hover ~ .dropdown,
+    button:focus ~ .dropdown,
+    .dropdown.show,
+    .dropdown:hover {
+        @include dropdown-visible;
+    }
+    
+    // split off, because older browsers do not support it
+    .dropdown:focus-within {
+        @include dropdown-visible;
     }
 }
 
