@@ -551,14 +551,13 @@ a, button {
                         width: 5rem; height: 5rem;
                         fill: $color-main;
                         @include transform(translate(-50%,-50%));
+                        @include transition(.2s);
                     }
                     
                     &:hover,
                     &:focus {
-                        background-color: $color-main;
-                        
                         svg {
-                            fill: $color-aspect;
+                            @include transform(translate(-50%,-50%) scale(1.1));
                         }
                     }
                 }
