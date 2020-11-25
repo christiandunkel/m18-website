@@ -266,6 +266,14 @@ body {
         }
     }
     
+    .dropdown-indicator {
+        display: inline-block; vertical-align: middle;
+        width: 0; height: 0; 
+        border-left: .3em solid transparent;
+        border-right: .3em solid transparent;
+        border-top: .3em solid currentColor;
+    }
+    
     // general properties of a dropdown menu
     .dropdown {
         position: absolute;
@@ -281,6 +289,11 @@ body {
         
         &.depth-2 {
             top: 0; left: 100%; z-index: 3;
+        }
+        
+        .dropdown-indicator {
+            float: right;
+            @include transform(rotate(-90deg));
         }
         
         li {
