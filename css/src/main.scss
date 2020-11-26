@@ -29,12 +29,13 @@ $font-main: 'Noto Sans', 'Roboto', 'Arial', sans-serif;
 $color-main: black;
 $color-aspect: #fddd38;
 $color-aspect-sub: #fdc038;
-$color-link-1: #ffb300;
-$color-link-2: #ff7800;
 
 // text colors
 $color-text: #1d1d1d;
-
+$color-link-1: #ffb300;
+$color-link-2: #ff7800;
+$color-link-shadow: rgba(255, 118, 0, 0.15);
+$color-link-shadow-hover: rgba(255, 98, 0, 0.4);
 
 
 /* SCSS FILES */

@@ -313,7 +313,7 @@ body {
     a {
         position: relative;
         padding: .1em .2em;
-        text-shadow: .05rem .05rem .2rem rgba(0,0,0,.1);
+        text-shadow: .05rem .05rem .2rem $color-link-shadow;
         color: #ffffff; font-weight: bold; text-decoration: none;
         
         @include linear-gradient(90deg, $color-link-1 0%, $color-link-2 100%);
@@ -327,7 +327,7 @@ body {
 
         &:hover,
         &:focus {
-            text-shadow: .05rem .05rem .2rem rgba(0,0,0,.3);
+            text-shadow: .05rem .05rem .2rem $color-link-shadow-hover;
             color: #ffffff; text-decoration: underline;
             outline-color: $color-link-1;
         }
