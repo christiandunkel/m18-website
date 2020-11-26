@@ -239,7 +239,7 @@ body {
 
         tr {
 
-            %cell {
+            %table-cell {
                 width: 1%; // so that the table auto-scales to full-width of the container
                 min-width: 12rem; padding: 1rem 1.5rem;
                 border-bottom: .15rem solid rgba(128, 128, 128, 0.3);
@@ -248,14 +248,14 @@ body {
 
             // headline
             th {
-                @extend %cell;
+                @extend %table-cell;
                 text-align: left; font-weight: bold; letter-spacing: .01em;
                 font-size: 2rem; line-height: 1.4em;
             }
 
             // normal cell
             td {
-                @extend %cell;
+                @extend %table-cell;
                 @include transition(background-color .2s);
                 font-size: 1.8rem; line-height: 1.5em;
             }
@@ -311,16 +311,25 @@ body {
     /* LINKS & BUTTONS */
 
     a {
+        position: relative;
         padding: .1em .2em;
-        cursor: pointer;
-        background-color: $color-main; border: .1em solid $color-main;
-        color: $color-aspect; font-weight: bold; text-decoration: none;
+        text-shadow: .05rem .05rem .2rem rgba(0,0,0,.1);
+        color: #ffffff; font-weight: bold; text-decoration: none;
+        
+        @include linear-gradient(90deg, $color-link-1 0%, $color-link-2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        -webkit-text-decoration-color: #fff !important;
+        text-decoration-color: #fff !important;
         @include transition(.15s);
 
         &:hover,
         &:focus {
-            background-color: $color-aspect;
-            color: $color-main; text-decoration: none;
+            text-shadow: .05rem .05rem .2rem rgba(0,0,0,.3);
+            color: #ffffff; text-decoration: underline;
+            outline-color: $color-link-1;
         }
     }
 }
