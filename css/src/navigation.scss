@@ -25,7 +25,7 @@
 #nav {
     position: relative; z-index: 9999;
     width: 100%; margin-bottom: $content-padding;
-    background-color: $color-main; border-top: .5rem solid $color-aspect;
+    background-color: $color-main;
     text-align: center;
     @include user-select(none);
 
@@ -46,8 +46,9 @@
 
                 &:hover,
                 &:focus {
-                    background-color: $color-aspect; outline: none;
+                    outline: none;
                     color: $color-main;
+                    @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
                 }
                 
                 &.home-btn {
@@ -80,11 +81,12 @@
     
     // general properties of a dropdown menu
     .dropdown {
+        @extend %main-section-shadow;
         position: absolute;
         max-width: 30rem; min-width: 25rem; width: 0; max-height: 80rem; height: 0; padding: 0;
         background-color: $color-aspect; visibility: hidden; opacity: 0;
         overflow: hidden;
-        @include box-shadow(0 .2rem .4rem rgba(0,0,0,.2));
+        @include linear-gradient(135deg, $color-aspect 0%, $color-aspect-sub 100%);
         @include transition(0s .2s, opacity 0s);
         
         &.depth-1 {

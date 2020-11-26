@@ -1,0 +1,112 @@
+#header {
+    width: 100%; margin: 0 auto; padding-bottom: .5rem;
+    text-align: center;
+    @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
+    
+    
+    
+    /* LOGO */
+    
+    .highlight {
+        display: inline-block;
+        max-width: $content-width + 150; width: 100%; padding: $header-padding;
+        text-align: left;
+    
+        .logo {
+            display: inline-block;
+
+            .link {
+                display: inline-block;
+                margin-right: .3em; padding: .5rem;
+                font-size: 5rem; line-height: 1em; color: $color-main; text-decoration: none; font-weight: bold;
+                @include user-select(none);
+
+                span {
+                    display: inline-block;
+                    margin-left: .1em; padding: .1em .15em;
+                    background-color: $color-main; border: .5rem solid $color-main;
+                    color: $color-aspect;
+                    @include border-radius(.3rem);
+                }
+
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+
+                    span {
+                        background-color: $color-aspect;
+                        color: $color-main;
+                    }
+                }
+            }
+
+            .text {
+                display: inline-block;
+                padding: .5rem;
+                font-size: 1.8rem; line-height: 1em; color: $color-main;
+            }
+        }
+
+
+
+        .language-selection {
+            float: right;
+            list-style: none;
+            margin: 1rem 0 0 4rem;
+            text-align: left;
+
+            > li {
+                display: inline-block;
+                margin: .3rem .7rem 0 .7rem;
+                font-size: 1.8rem;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+                
+                &:last-child {
+                    margin-right: 0;
+                }
+                
+                .lang-select-btn {
+                    min-width: 12rem; padding: .1em .25em;
+                    border: .4rem solid transparent;
+                    font-size: 2.2rem; font-weight: normal; text-align: center;
+                    @include border-radius(.4rem);
+                    
+                    &:hover,
+                    &:focus {
+                        border-color: $color-main;
+                    }
+
+                    html[lang="de"] &[set-lang="de"],
+                    html[lang="en"] &[set-lang="en"] {
+                        background-color: $color-main; cursor: auto;
+                        color: $color-aspect; font-weight: bold;
+                        
+                        &:hover,
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    /* BANNER */
+    
+    .banner {
+        @extend %main-section-shadow;
+        display: inline-block;
+        max-width: 1920px; width: 100%; height: 30rem;
+        background-position: center; background-repeat: no-repeat;
+        @include background-size(cover);
+        
+        @include ON_MOBILE {
+            display: none;
+        }
+    }
+}

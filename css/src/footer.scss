@@ -5,8 +5,8 @@
         
     .highlight {
         width: 100%;
-        background-color: $color-aspect;
         color: $color-main; text-align: center;
+        @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
     }
     
     .inner {
