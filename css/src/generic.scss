@@ -47,6 +47,20 @@ html[lang="de"] *[lang]:not([lang="de"]) {
 
 
 
+/* PROPERTIES */
+
+$content-width: 1200px;
+$header-padding: 2rem;
+$content-padding: 5rem;
+
+@mixin main-section-shadow {
+    @include box-shadow(0 .15rem .7rem rgba(0,0,0,.1));
+}
+
+
+
+
+
 /* GENERIC ELEMENTS */
 
 *,
@@ -90,9 +104,7 @@ html {
     }
 }
 
-$content-width: 1200px;
-$header-padding: 2rem;
-$content-padding: 5rem;
+
 
 body {
     position: relative;
@@ -106,13 +118,9 @@ body {
     @include animation(fade-in 1s);
 }
 
-@mixin main-section-shadow {
-    @include box-shadow(0 .15rem .7rem rgba(0,0,0,.1));
-}
-
 #article {
     @include main-section-shadow;
-    max-width: $content-width; width: 96%; margin: 3% auto; padding: $content-padding;
+    max-width: $content-width; width: 94%; margin: 3% auto; padding: $content-padding;
     background: white;
     @include border-radius(.3rem);
 
@@ -142,6 +150,7 @@ body {
     }
     
     @include ON_MOBILE {
+        padding: 3rem;
         
         #main {
             width: 100%;
@@ -197,6 +206,65 @@ body {
 
         + * {
             margin-top: 3rem;
+        }
+    }
+
+    table {
+        @include main-section-shadow;
+        display: block;
+        width: 100%; margin: 4rem 0;
+        table-layout: fixed; overflow-x: auto;
+        border: .15rem solid rgba(128, 128, 128, 0.3);
+        text-align: left;
+        @include border-radius(.3rem);
+
+        %table-section {
+            table-layout: fixed;
+
+            tr:last-child {
+                td, th {
+                    border: none;
+                }
+            }
+        }
+        
+        thead {
+            @extend %table-section;
+            @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
+        }
+        
+        tbody {
+            @extend %table-section;
+        }
+
+        tr {
+
+            %cell {
+                width: 1%; // so that the table auto-scales to full-width of the container
+                min-width: 12rem; padding: 1rem 1.5rem;
+                border-bottom: .15rem solid rgba(128, 128, 128, 0.3);
+                overflow: hidden; word-break: break-word; vertical-align: top;
+            }
+
+            // headline
+            th {
+                @extend %cell;
+                text-align: left; font-weight: bold; letter-spacing: .01em;
+                font-size: 2rem; line-height: 1.4em;
+            }
+
+            // normal cell
+            td {
+                @extend %cell;
+                @include transition(background-color .2s);
+                font-size: 1.8rem; line-height: 1.5em;
+            }
+
+            &:nth-child(odd) {
+                td {
+                    background-color: rgba(128, 128, 128, 0.05);
+                }
+            }
         }
     }
     
