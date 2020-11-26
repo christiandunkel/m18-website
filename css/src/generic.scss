@@ -106,12 +106,12 @@ body {
     @include animation(fade-in 1s);
 }
 
-%main-section-shadow {
+@mixin main-section-shadow {
     @include box-shadow(0 .15rem .7rem rgba(0,0,0,.1));
 }
 
 #article {
-    @extend %main-section-shadow;
+    @include main-section-shadow;
     max-width: $content-width; width: 100%; margin: 0 auto; padding: $content-padding;
     background: white;
     @include border-radius(.3rem);

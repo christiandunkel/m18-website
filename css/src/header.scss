@@ -1,4 +1,5 @@
 #header {
+    @include main-section-shadow;
     width: 100%; margin: 0 auto; padding-bottom: .5rem;
     text-align: center;
     @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
@@ -54,6 +55,10 @@
             list-style: none;
             margin: 1rem 0 0 4rem;
             text-align: left;
+            
+            @include ON_MOBILE {
+                display: none;
+            }
 
             > li {
                 display: inline-block;
@@ -99,7 +104,7 @@
     /* BANNER */
     
     .banner {
-        @extend %main-section-shadow;
+        @include main-section-shadow;
         display: inline-block;
         max-width: 1920px; width: 100%; height: 30rem;
         background-position: center; background-repeat: no-repeat;
