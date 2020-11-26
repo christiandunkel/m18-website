@@ -1,20 +1,13 @@
 /* DEVICE MEDIA QUERIES */
 
 @mixin ON_DESKTOP {
-    @media (min-width: 801px) {
+    @media (min-width: 901px) {
         @content;
     }
 }
 
 @mixin ON_MOBILE {
-    @media (max-width: 800px) {
-        @content;
-    }
-}
-
-// below most smallest screen devices 
-@mixin ON_MIN_SCREEN {
-    @media (max-width: 300px) {
+    @media (max-width: 900px) {
         @content;
     }
 }
@@ -46,3 +39,5 @@ $color-text: #1d1d1d;
 @import 'reset';
 @import 'fonts';
 @import 'generic';
+@import 'navigation';
+@import 'footer';
