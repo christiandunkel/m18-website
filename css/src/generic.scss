@@ -112,7 +112,7 @@ body {
 
 #article {
     @include main-section-shadow;
-    max-width: $content-width; width: 100%; margin: 0 auto; padding: $content-padding;
+    max-width: $content-width; width: 96%; margin: 3% auto; padding: $content-padding;
     background: white;
     @include border-radius(.3rem);
 

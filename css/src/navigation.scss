@@ -34,7 +34,7 @@
     @include user-select(none);
     
     @include ON_DESKTOP {
-        width: 100%; margin-bottom: $content-padding;
+        width: 100%;
         background-color: $color-main;
         text-align: center;
 

@@ -1,6 +1,6 @@
 #footer {
     @include main-section-shadow;
-    width: 100%; margin-top: 5rem;
+    width: 100%;
     background-color: $color-main;
     color: $color-aspect; text-align: center;
         
@@ -32,7 +32,7 @@
                 &:hover,
                 &:focus {
                     text-decoration: none;
-                    background-color: $color-aspect; border-color: $color-main;
+                    background-color: transparent; border-color: $color-main;
                     color: $color-main;
                 }
             }
