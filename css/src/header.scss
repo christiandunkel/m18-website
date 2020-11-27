@@ -111,7 +111,7 @@
 
             > * {
                 position: absolute; left: 10%;
-                width: 80%; height: 10%;
+                width: 80%; height: 8%;
                 background-color: $color-main;
                 @include border-radius(8rem);
                 @include transform-origin(center);
@@ -119,20 +119,20 @@
             }
 
             .top {top: 20%;}
-            .middle {bottom: 45%;}
+            .middle {bottom: 46%;}
             .bottom {bottom: 20%;}
             
             html.nav-is-open & {
                 
                 .top {
-                    top: 45%;
+                    top: 46%;
                     @include transform(rotate(45deg));
                 }
                 .middle {
                     opacity: 0;
                 }
                 .bottom {
-                    bottom: 45%;
+                    bottom: 46%;
                     @include transform(rotate(-45deg));
                 }
             }
@@ -208,9 +208,8 @@
             text-align: left;
 
             > li {
-                position: relative; vertical-align: bottom;
+                display: inline-block; position: relative; vertical-align: bottom;
                 list-style: none;
-                display: inline-block;
 
                 > a {
                     display: inline-block; position: relative; z-index: 1; vertical-align: bottom;
@@ -311,6 +310,120 @@
     }
 
     @include ON_MOBILE {
-        display: none;
+        position: fixed; top: 0; right: 100%;
+        width: 100%; height: 100%;
+        @include transition(0s .2s);
+        
+        > .overlay {
+            position: absolute; top: 0; left: 0; z-index: 1;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, .5); opacity: 0;
+            @include transition(.2s);
+        }
+        
+        > .main {
+            @include main-section-shadow;
+            display: inline-block; position: relative; z-index: 2;
+            max-width: 60rem; width: 80%; height: 100%; padding: 2rem;
+            background-color: $color-main; overflow-y: auto;
+            color: $color-aspect; text-align: left;
+            @include transform(translate(-101%, 0));
+            @include transition(.1s);
+
+            > li {
+                list-style: none;
+                margin: 1rem 0;
+
+                > a {
+                    display: inline-block; position: relative; z-index: 1;
+                    width: 100%; padding: 2rem 1.8rem;
+                    font-size: 2.5rem; line-height: 1em; font-weight: bold; color: $color-aspect; text-decoration: none;
+
+                    &:hover,
+                    &:focus {
+                        outline: none;
+                        background-color: $color-aspect;
+                        color: $color-main;
+                    }
+
+                    &.home-btn {
+
+                        svg {
+                            display: inline-block; vertical-align: baseline;
+                            width: 1em; height: 1em;
+                            fill: currentColor;
+                        }
+                    }
+                }
+            }
+        }
+
+        .dropdown {
+            @include main-section-shadow;
+            width: 100%; margin: .8rem 0 3rem 0; padding: 1rem;
+            background-color: $color-aspect;
+            overflow: hidden;
+            
+            &.depth-1 {
+                @include linear-gradient(135deg, $color-aspect 0%, $color-aspect-sub 100%);
+                
+                a {
+                    color: $color-main;
+
+                    &:hover,
+                    &:focus {
+                        background-color: $color-main;
+                        color: $color-aspect;
+                    }
+                }
+            }
+
+            &.depth-2 {
+                background-color: $color-main;
+                
+                a {
+                    color: $color-aspect;
+
+                    &:hover,
+                    &:focus {
+                        background-color: $color-aspect;
+                        color: $color-main;
+                    }
+                }
+            }
+
+            li {
+                position: relative;
+                list-style: none;
+                margin: 0; padding: 0;
+
+                a {
+                    display: inline-block;
+                    width: 100%; padding: 1.2rem;
+                    font-size: 1.7rem; line-height: 1.3em; text-decoration: none; font-weight: bold;
+
+                    &:hover,
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+        
+        html.nav-is-open & {
+            right: 0;
+            visibility: visible; opacity: 1;
+            @include transition(0s);
+            
+            > .overlay {
+                opacity: 1;
+                @include transition(.5s linear);
+            }
+            
+            > .main {
+                @include transform(translate(0, 0));
+                @include transition(.3s);
+            }
+        }
     }
 }

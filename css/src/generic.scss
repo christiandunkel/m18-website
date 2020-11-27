@@ -111,6 +111,11 @@ body {
     min-height: 100%; margin: 0 auto;
     overflow-x: hidden;
     color: $color-text; font-size: 0;
+           
+    html.nav-is-open & {
+        max-height: 100%;
+        overflow: hidden;
+    }
 }
 
 #article, #footer {

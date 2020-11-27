@@ -75,6 +75,12 @@ var NAVIGATION = {
         document.getElementById('mobile-hamburger-btn').addEventListener('click', function (e) {
             document.documentElement.classList.toggle('nav-is-open');
         });
+        
+        // add event to overlay in mobile navigation
+        var nav = document.getElementById('nav');
+        document.getElementsByClassName('overlay', nav)[0].addEventListener('click', function (e) {
+            document.documentElement.classList.remove('nav-is-open');
+        });
     },
     
     // adds 'show' class to visible dropdown menus, to make them work in older browsers
