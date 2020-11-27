@@ -76,11 +76,19 @@ var NAVIGATION = {
             document.documentElement.classList.toggle('nav-is-open');
         });
         
-        // add event to overlay in mobile navigation
+        // add event to overlay in the mobile navigation
         var nav = document.getElementById('nav');
         document.getElementsByClassName('overlay', nav)[0].addEventListener('click', function (e) {
             document.documentElement.classList.remove('nav-is-open');
         });
+        
+        // toggles the opening of sub-dropdown menus in the mobile navigation
+        var openers = document.getElementsByClassName('mobile-dropdown-opener');
+        for (var i = 0, len = openers.length; i < len; i++) {
+            openers[i].addEventListener('click', function (e) {
+                _.target(e).classList.toggle('show');
+            });
+        }
     },
     
     // adds 'show' class to visible dropdown menus, to make them work in older browsers

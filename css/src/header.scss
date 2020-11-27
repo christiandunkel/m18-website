@@ -196,6 +196,14 @@
 #nav {
     position: relative; z-index: 9999;
     @include user-select(none);
+
+    .dropdown-indicator {
+        display: inline-block; vertical-align: middle;
+        width: 0; height: 0; 
+        border-left: .3em solid transparent;
+        border-right: .3em solid transparent;
+        border-top: .3em solid currentColor;
+    }
     
     @include ON_DESKTOP {
         width: 100%;
@@ -242,13 +250,9 @@
                 }
             }
         }
-
-        .dropdown-indicator {
-            display: inline-block; vertical-align: middle;
-            width: 0; height: 0; 
-            border-left: .3em solid transparent;
-            border-right: .3em solid transparent;
-            border-top: .3em solid currentColor;
+        
+        .mobile-dropdown-opener {
+            display: none;
         }
 
         // general properties of a dropdown menu
@@ -317,8 +321,8 @@
         > .overlay {
             position: absolute; top: 0; left: 0; z-index: 1;
             width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, .5); opacity: 0;
-            @include transition(.2s);
+            background-color: rgba(0, 0, 0, .7); opacity: 0;
+            @include transition(.2s linear);
         }
         
         > .main {
@@ -331,6 +335,7 @@
             @include transition(.1s);
 
             > li {
+                position: relative;
                 list-style: none;
                 margin: 1rem 0;
 
@@ -357,9 +362,25 @@
                 }
             }
         }
+        
+        .mobile-dropdown-opener {
+            position: absolute; top: 0; left: 0; z-index: 3; // must be above normal links in nav
+            width: 100%; height: 100%;
+            
+            &:hover,
+            &:focus {
+                outline: none;
+            }
+            
+            &.show + .dropdown {
+                display: block;
+            }
+        }
 
         .dropdown {
             @include main-section-shadow;
+            display: none;
+            position: relative; z-index: 4; // must be above mobile-dropdown-opener
             width: 100%; margin: .8rem 0 3rem 0; padding: 1rem;
             background-color: $color-aspect;
             overflow: hidden;
@@ -417,7 +438,7 @@
             
             > .overlay {
                 opacity: 1;
-                @include transition(.5s linear);
+                @include transition(.7s linear);
             }
             
             > .main {
