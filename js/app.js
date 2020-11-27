@@ -65,7 +65,16 @@ var NAVIGATION = {
     dropdown_menus : [],
     
     init : function () {
+        NAVIGATION.initMobileMenu();
         NAVIGATION.initDropdownMenus();
+    },
+    
+    initMobileMenu : function () {
+        
+        // enable hamburger button to open/close mobile navigation
+        document.getElementById('mobile-hamburger-btn').addEventListener('click', function (e) {
+            document.documentElement.classList.toggle('nav-is-open');
+        });
     },
     
     // adds 'show' class to visible dropdown menus, to make them work in older browsers
