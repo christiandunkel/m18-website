@@ -1,3 +1,7 @@
+'use strict';
+
+
+
 /* Polyfill functions */
 
 // https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Polyfill
