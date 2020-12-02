@@ -259,8 +259,8 @@
         .dropdown {
             @include main-section-shadow;
             position: absolute;
-            max-width: 30rem; min-width: 25rem; width: 0; max-height: 80rem; height: 0; padding: 0;
-            background-color: $color-aspect; visibility: hidden; opacity: 0;
+            max-width: 30rem; min-width: 25rem; width: 0; max-height: 40rem; height: 0; padding: 0;
+            visibility: hidden; opacity: 0;
             overflow: hidden;
             @include linear-gradient(135deg, $color-aspect 0%, $color-aspect-sub 100%);
             @include transition(0s .2s, opacity 0s);

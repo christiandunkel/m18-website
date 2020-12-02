@@ -15,22 +15,23 @@
         }());
     
     </script>
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    
+    <!-- preload fonts -->
+    <link rel="preload" href="font/noto-sans-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="font/noto-sans-bold.woff2" as="font" type="font/woff2" crossorigin />
     
     <!-- style sheets -->
     <link rel="stylesheet" href="css/app.min.css" type="text/css" />
     
-    <!-- theme and meta data -->
+    <!-- themes and application resources -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="manifest" href="manifest.json" />
     <meta name="msapplication-TileColor" content="#fddd38">
     <meta name="msapplication-TileImage" content="img/logo_128x128.png">
-    
-    <!-- favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-                    
-    <!-- all SVG icons on this page are by IcoMoon at icomoon.io -->
+    <link rel="apple-touch-icon" sizes="16x16 32x32 64x64 128x128" href="img/logo-128x128.png">
     
 </head>
     
