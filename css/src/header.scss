@@ -372,6 +372,7 @@
 }
 
 #nav {
+    @include main-section-shadow;
     position: relative; z-index: 9999;
     @include user-select(none);
 
@@ -408,9 +409,8 @@
                     
                     &:hover,
                     &:focus {
-                        outline: none;
+                        background-color: $color-aspect; outline: none;
                         color: $color-main;
-                        @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
                     }
 
                     &.home-btn {
