@@ -22,7 +22,7 @@ _.uglify = require('uglify-js');
  */
     
 const INPUT_PATH = _.path.join(__dirname, 'app.js');
-const OUTPUT_PATH = _.path.join(__dirname, 'app.min.js');
+const OUTPUT_PATH = _.path.join(__dirname, '..', 'app.min.js');
 
 
 
