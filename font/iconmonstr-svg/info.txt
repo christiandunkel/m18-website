@@ -1,0 +1,5 @@
+SVG icons are from:
+https://iconmonstr.com
+
+And were converted to a font using:
+https://fontello.com/

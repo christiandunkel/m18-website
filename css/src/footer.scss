@@ -3,20 +3,31 @@
     width: 100%;
     background-color: $color-main;
     color: $color-aspect; text-align: center;
-        
-    .highlight {
-        width: 100%;
-        color: $color-main; text-align: center;
-        @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
-    }
     
     .inner {
         display: inline-block;
         max-width: $content-width; width: 100%; padding: $content-padding;
         text-align: left;
+    }
         
+    .highlight {
+        width: 100%;
+        color: $color-main; text-align: center;
+        @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
+
         $margin-vertical: 1.5rem;
-    
+            
+        @media (max-width: 680px) {
+            > .inner {
+                text-align: center;
+
+                .social-media {
+                    float: none;
+                    margin: $margin-vertical 0 0 0;
+                }
+            }
+        }
+
         .slogan {
             display: inline-block;
             margin: $margin-vertical 0;
@@ -28,7 +39,7 @@
                 color: $color-aspect; text-decoration: none;
                 @include border-radius(.3rem);
                 @include user-select(none);
-                
+
                 &:hover,
                 &:focus {
                     text-decoration: none;
@@ -37,67 +48,74 @@
                 }
             }
         }
-        
+
         .social-media {
             float: right;
             margin: $margin-vertical 0 $margin-vertical 6rem;
-            
+
+            > li:first-child {
+                margin-left: 0;
+            }
+
             li {
                 list-style: none;
                 display: inline-block;
-                margin-left: 1rem;
-                
+                margin-left: 1.5rem;
+
                 a {
                     display: inline-block; position: relative;
                     width: 6.4rem; height: 6.4rem;
                     color: black;
                     @include border-radius(.5rem);
-                    
-                    svg {
-                        position: absolute; top: 50%; left: 50%;
-                        width: 5rem; height: 5rem;
-                        fill: $color-main;
+
+                    > * {
+                        display: block; position: absolute; top: 50%; left: 50%;
+                        font-size: 0;
                         @include transform(translate(-50%,-50%));
                         @include transition(.2s);
+
+                        &:before {
+                            font-size: 5rem; line-height: 1em;
+                        }
                     }
-                    
+
                     &:hover,
                     &:focus {
-                        svg {
-                            @include transform(translate(-50%,-50%) scale(1.1));
-                        }
+                        text-shadow: 0 .05rem .4rem $color-main,
+                                     0 .1rem .65rem $color-main;
+                        color: $color-aspect;
                     }
                 }
             }
         }
+    }
         
-        .links {
-            
-            > .list:last-child {
-                margin-right: 0;
+    .links {
+
+        > .list:last-child {
+            margin-right: 0;
+        }
+
+        .list {
+            display: inline-block; vertical-align: top;
+            margin: 4rem 7rem 4rem 0; padding-left: 2rem;
+
+            .headline {
+                list-style: none;
+                margin-bottom: .5em;
+                font-size: 3rem; line-height: 1.5em; font-weight: bold;
             }
-            
-            .list {
-                display: inline-block; vertical-align: top;
-                margin: 4rem 7rem 4rem 0; padding-left: 2rem;
-            
-                .headline {
-                    list-style: none;
-                    margin-bottom: .5em;
-                    font-size: 3rem; line-height: 1.5em; font-weight: bold;
-                }
 
-                .link {
-                    padding: .1em 0;
-                    font-size: 2.3rem; line-height: 1.5em;
+            .link {
+                padding: .1em 0;
+                font-size: 2.3rem; line-height: 1.5em;
 
-                    a {
-                        font-weight: normal; color: currentColor; text-decoration: none;
-                        
-                        &:hover,
-                        &:focus {
-                            text-decoration: underline;
-                        }
+                a {
+                    font-weight: normal; color: currentColor; text-decoration: none;
+
+                    &:hover,
+                    &:focus {
+                        text-decoration: underline;
                     }
                 }
             }

@@ -1,3 +1,5 @@
+/* DEFAULT FONT */
+
 @font-face {
     font-family: 'Noto Sans';
     font-style: normal;
@@ -21,3 +23,66 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
     font-display: swap;
 }
+
+
+
+/* ICON FONT */
+
+@font-face {
+    font-family: 'iconmonstr-font';
+    font-weight: normal;
+    font-style: normal;
+    src: url('../font/iconmonstr-font.eot'); // IE9 Compat Modes
+    src: url('../font/iconmonstr-font.eot?#iefix') format('embedded-opentype'), // IE6-8
+         url('../font/iconmonstr-font.woff2') format('woff2'),
+         url('../font/iconmonstr-font.woff') format('woff');
+    font-display: block;
+}
+
+@mixin icon-basic {
+    &:before {
+        speak: never;
+        font-family: 'iconmonstr-font'; text-decoration: inherit; font-style: normal; font-weight: normal;
+        @include user-select(none);
+
+        // reset parent styles that can break glyph codes
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1em;
+
+        // font smoothing
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+// basic formatting for an icon
+%icon-basic {
+    @include icon-basic;
+}
+
+@mixin icon-with-layout {
+    @include icon-basic;
+
+    &:before {
+        display: inline-block;
+        width: 1em;
+        text-align: center;
+    }
+}
+
+// icon treated as an image
+%icon-with-layout {
+    @include icon-with-layout;
+}
+
+[class^="icon-"]:before, 
+[class*=" icon-"]:before {
+    @extend %icon-with-layout;
+}
+
+.icon-iconmonstr-magnifier-6:before { content: '\e800'; }
+.icon-iconmonstr-vimeo-3:before { content: '\e801'; }
+.icon-iconmonstr-facebook-3:before { content: '\e802'; }
+.icon-iconmonstr-home-1:before { content: '\e803'; }
+.icon-iconmonstr-instagram-1:before { content: '\e804'; }

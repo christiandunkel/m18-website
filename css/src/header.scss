@@ -160,7 +160,7 @@
 
 
 
-/* NAVIGATION */
+/* BUTTON FOR SKIPPING NAVIGATION */
 
 .fixed-center {
     position: fixed; top: -5px; left: 50%; z-index: 10000;
@@ -186,6 +186,12 @@
     }
 }
 
+
+
+
+
+/* NAVIGATION */
+
 @mixin desktop-dropdown-visible {
     width: auto; height: auto; padding: .5rem 0;
     visibility: visible; opacity: 1;
@@ -198,8 +204,8 @@
     @include user-select(none);
 
     .dropdown-indicator {
-        display: inline-block; vertical-align: middle;
-        width: 0; height: 0; 
+        display: inline-block; vertical-align: baseline;
+        width: 0; height: 0; margin: 0 0 .1em .4em;
         border-left: .3em solid transparent;
         border-right: .3em solid transparent;
         border-top: .3em solid currentColor;
@@ -216,14 +222,18 @@
             text-align: left;
 
             > li {
-                display: inline-block; position: relative; vertical-align: bottom;
+                display: inline-block; position: relative; vertical-align: top;
                 list-style: none;
 
                 > a {
                     display: inline-block; position: relative; z-index: 1; vertical-align: bottom;
                     padding: 2rem 1.8rem;
-                    font-size: 2.4rem; line-height: 1em; color: $color-aspect; text-decoration: none;
+                    font-size: 0; line-height: 1em; color: $color-aspect; text-decoration: none;
 
+                    > * {
+                        font-size: 2.4rem; line-height: 1em;
+                    }
+                    
                     &:hover,
                     &:focus {
                         outline: none;
@@ -232,11 +242,11 @@
                     }
 
                     &.home-btn {
-
-                        svg {
-                            display: inline-block; vertical-align: baseline;
-                            width: 1em; height: 1em;
-                            fill: currentColor;
+                        > * {
+                            font-size: 0;
+                            &:before {
+                                font-size: 2.4rem;
+                            }
                         }
                     }
                 }
