@@ -99,17 +99,22 @@
                 <a class="link" href="#">Stu<span>Ko</span></a><br />
                 <span class="text">Studierenden<b>Konvent</b></span>
             </div>
-
-            <ul class="language-selection">
-                <li><button class="lang-select-btn" set-lang="de" tabindex="-1">Deutsch</button></li>
-                <li><button class="lang-select-btn" set-lang="en">English</button></li>
-            </ul>
             
-            <button id="mobile-hamburger-btn">
-                <span class="top"></span>
-                <span class="middle"></span>
-                <span class="bottom"></span>
-            </button>
+            <div class="right-menu">
+
+                <ul class="language-selection">
+                    <li><button class="lang-select-btn" set-lang="de" tabindex="-1">Deutsch</button></li>
+                    <li><button class="lang-select-btn" set-lang="en">English</button></li>
+                </ul>
+
+                <button id="open-search-btn"><i class="icon icon-iconmonstr-magnifier-6"></i></button>
+
+                <button id="mobile-hamburger-btn">
+                    <span class="top"></span>
+                    <span class="middle"></span>
+                    <span class="bottom"></span>
+                </button>
+            </div>
         </div>
         
         <br />
@@ -117,6 +122,15 @@
         <div class="banner" style="background-image: url(img/banner.png);"></div>
         
     </header>
+    
+    <section id="search-bar">
+        <div class="overlay"></div>
+        <form id="search-form" action="#" method="get">
+            <input class="input" type="text" class="name" placeholder="Search..." maxlength="250" name="q">
+            <button form="search-form" class="submit-btn" value="Submit"><i class="icon icon-iconmonstr-magnifier-6"></i></button>
+        </form>
+        <button class="close-btn"></button>
+    </section>
     
     <nav id="nav">
         <div class="overlay"></div>

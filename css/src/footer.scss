@@ -71,6 +71,7 @@
                     > * {
                         display: block; position: absolute; top: 50%; left: 50%;
                         font-size: 0;
+                        @include border-radius(1.25rem);
                         @include transform(translate(-50%,-50%));
                         @include transition(.2s);
 
@@ -79,10 +80,10 @@
                         }
                     }
 
-                    &:hover,
-                    &:focus {
-                        text-shadow: 0 .05rem .4rem $color-main,
-                                     0 .1rem .65rem $color-main;
+                    &:hover > *,
+                    &:focus > * {
+                        background-color: $color-main;
+                        text-shadow: 0 .1rem .5rem $color-main;
                         color: $color-aspect;
                     }
                 }

@@ -111,8 +111,10 @@ body {
     min-height: 100%; margin: 0 auto;
     overflow-x: hidden;
     color: $color-text; font-size: 0;
-           
-    html.nav-is-open & {
+         
+    // disable scrolling in the main page
+    html.nav-is-open &,
+    html.search-bar-is-open & {
         max-height: 100%;
         overflow: hidden;
     }
@@ -128,6 +130,10 @@ body {
     max-width: $content-width; width: 94%; margin: 3% auto; padding: $content-padding;
     background: white;
     @include border-radius(.3rem);
+    
+    @media (min-width: $content-width + 1) {
+        margin: $content-width/100 * 3 auto;
+    }
 
     main, aside {
         

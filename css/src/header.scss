@@ -49,91 +49,128 @@
         }
 
 
-
-        .language-selection {
+        
+        .right-menu {
             float: right;
-            list-style: none;
             margin: 1rem 0 0 4rem;
-            text-align: left;
             
             @include ON_MOBILE {
-                display: none;
+                position: absolute; top: 50%; right: $header-padding;
+                margin: 0;
+                @include transform(translate(0, -50%));
+            }
+            
+            > * {
+                display: inline-block; vertical-align: middle;
             }
 
-            > li {
-                display: inline-block;
-                margin: .3rem .7rem 0 .7rem;
-                font-size: 1.8rem;
+            .language-selection {
+                list-style: none;
+                text-align: left;
 
-                &:first-child {
-                    margin-left: 0;
+                @include ON_MOBILE {
+                    display: none;
                 }
-                
-                &:last-child {
-                    margin-right: 0;
-                }
-                
-                .lang-select-btn {
-                    min-width: 12rem; padding: .1em .25em;
-                    border: .4rem solid transparent;
-                    font-size: 2.2rem; font-weight: normal; text-align: center;
-                    @include border-radius(.4rem);
-                    
-                    &:hover,
-                    &:focus {
-                        border-color: $color-main;
+
+                > li {
+                    display: inline-block;
+                    margin: 0 .7rem .3rem .7rem;
+                    font-size: 1.8rem;
+
+                    &:first-child {
+                        margin-left: 0;
                     }
 
-                    html[lang="de"] &[set-lang="de"],
-                    html[lang="en"] &[set-lang="en"] {
-                        background-color: $color-main; cursor: auto;
-                        color: $color-aspect; font-weight: bold;
-                        
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    .lang-select-btn {
+                        min-width: 12rem; padding: .5rem 1rem;
+                        border: .3rem solid transparent;
+                        font-size: 2.2rem; font-weight: normal; text-align: center;
+                        @include border-radius(.3rem);
+
                         &:hover,
                         &:focus {
-                            outline: none;
+                            border-color: $color-main;
+                        }
+
+                        html[lang="de"] &[set-lang="de"],
+                        html[lang="en"] &[set-lang="en"] {
+                            background-color: $color-main; cursor: auto;
+                            color: $color-aspect; font-weight: bold;
+
+                            &:hover,
+                            &:focus {
+                                outline: none;
+                            }
                         }
                     }
                 }
             }
-        }
-        
-        
 
-        #mobile-hamburger-btn {
-            position: absolute; top: 50%; right: $header-padding;
-            width: 8rem; height: 8rem;
-            @include transform(translate(0, -50%));
-            
-            @include ON_DESKTOP {
-                display: none;
-            }
-
-            > * {
-                position: absolute; left: 10%;
-                width: 80%; height: 8%;
-                background-color: $color-main;
-                @include border-radius(8rem);
-                @include transform-origin(center);
-                @include transition(.3s);
-            }
-
-            .top {top: 20%;}
-            .middle {bottom: 46%;}
-            .bottom {bottom: 20%;}
-            
-            html.nav-is-open & {
+            #open-search-btn {
+                margin-left: 5rem; padding: 1rem;
+                border: .3rem solid transparent;
+                font-size: 0; line-height: 1em;
+                @include border-radius(.3rem);
                 
-                .top {
-                    top: 46%;
-                    @include transform(rotate(45deg));
+                @include ON_MOBILE {
+                    margin: 0 3rem 0 0;
                 }
-                .middle {
-                    opacity: 0;
+                
+                @include ON_DESKTOP {
+                    &:hover,
+                    &:focus {
+                        border-color: $color-main;
+                    }
                 }
-                .bottom {
-                    bottom: 46%;
-                    @include transform(rotate(-45deg));
+                
+                > * {
+                    text-align: center;
+                    font-size: 0;
+                    
+                    &:before {
+                        font-size: 4rem; line-height: 1em; color: $color-main;
+                    }
+                }
+            }
+
+            #mobile-hamburger-btn {
+                position: relative;
+                width: 8rem; height: 8rem;
+
+                @include ON_DESKTOP {
+                    display: none;
+                }
+
+                > * {
+                    position: absolute; left: 10%;
+                    width: 80%; height: 8%;
+                    background-color: $color-main;
+                    @include border-radius(8rem);
+                    @include transform-origin(center);
+                    @include transition(.3s);
+                }
+
+                .top {top: 20%;}
+                .middle {bottom: 46%;}
+                .bottom {bottom: 20%;}
+
+                html.nav-is-open & {
+
+                    .top {
+                        top: 46%;
+                        @include transform(rotate(45deg));
+                    }
+                    .middle {
+                        opacity: 0;
+                    }
+                    .bottom {
+                        bottom: 46%;
+                        @include transform(rotate(-45deg));
+                    }
                 }
             }
         }
@@ -183,6 +220,141 @@
 
     @include ON_MOBILE {
         display: none;
+    }
+}
+
+
+
+
+
+/* SEARCH BAR */
+
+#search-bar {
+    position: fixed; top: 0; left: 0; z-index: 10000;
+    width: 0; height: 0;
+    visibility: hidden; opacity: 0; overflow: hidden;
+    @include transition(0s .5s, opacity .5s);
+    
+    &.show {
+        width: 100%; height: 100%;
+        visibility: visible; opacity: 1;
+        @include transition(0s, opacity .5s);
+    }
+    
+    .overlay {
+        position: absolute; top: 0; left: 0; z-index: 1;
+        width: 100%; height: 100%;
+        background-color: rgba(0,0,0,.9);
+    }
+    
+    .close-btn {
+        position: absolute; top: 1.5rem; right: 1.5rem; z-index: 3;
+        width: 6rem; height: 6rem;
+        color: white;
+        
+        &:active {
+            @include transform(scale(.9));
+        }
+        
+        &:after,
+        &:before {
+            content: '';
+            position: absolute; left: 10%;
+            width: 80%; height: 8%;
+            background-color: white;
+            @include border-radius(5rem);
+            @include transform-origin(center);
+            @include transition(.3s);
+        }
+
+        &:after {
+            top: 46%;
+            @include transform(rotate(45deg));
+        }
+        &:before {
+            bottom: 46%;
+            @include transform(rotate(-45deg));
+        }
+    }
+    
+    #search-form {
+        position: absolute; top: 50%; left: 50%; z-index: 2;
+        max-width: 100rem; width: 90%; padding: 2rem;
+        @include transform(translate(-50%,-50%));
+        
+        .input {
+            width: 100%; padding: 3rem (3rem + 5rem + 3rem) 3rem 3rem;
+            background: none; border-bottom: .5rem solid rgba(255, 255, 255, 0.6);
+            font-size: 5rem; line-height: 1em; color: $color-aspect;
+            @include transition(.2s);
+            
+            // IE 10+
+            &:-ms-input-placeholder {
+                color: rgba(255,255,255,.3);
+            }
+
+            // Microsoft Edge
+            &::-ms-input-placeholder {
+                color: rgba(255,255,255,.3);
+            }
+
+            // Firefox 19+
+            &::-moz-placeholder {
+                color: rgba(255,255,255,.3);
+            }
+
+            // Chrome / Opera / Safari
+            &::-webkit-input-placeholder {
+                color: rgba(255,255,255,.3);
+            }
+
+            // Firefox 18-
+            &:-moz-placeholder {
+                color: rgba(255,255,255,.3);
+            }
+            
+            &:focus {
+                border-color: white;
+                outline-style: dashed;
+                outline-offset: .6rem;
+                outline-width: .4rem;
+                outline-color: white;
+            }
+            
+            &:active {
+                background-color: rgba(255,255,255,.15);
+            }
+        }
+        
+        .submit-btn {
+            position: absolute; top: 50%; right: 3rem + 2rem;
+            opacity: .5;
+            font-size: 0; line-height: 1em; color: white;
+            @include transform(translate(0,-50%));
+            
+            &:hover,
+            &:focus {
+                opacity: 1;
+            }
+            
+            > * {
+                font-size: 0; line-height: 1em;
+                
+                &:before {
+                    font-size: 5rem; line-height: 1em;
+                }
+            }
+        }
+        
+        @media (max-width: 700px) {
+            .input {
+                padding-right: 3rem + 3rem + 3rem;
+                font-size: 3rem;
+            }
+            .submit-btn > *:before {
+                font-size: 3rem;
+            }
+        }
     }
 }
 
@@ -326,6 +498,7 @@
     @include ON_MOBILE {
         position: fixed; top: 0; right: 100%;
         width: 100%; height: 100%;
+        visibility: hidden; opacity: 0;
         @include transition(0s .2s);
         
         > .overlay {

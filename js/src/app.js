@@ -69,8 +69,39 @@ var NAVIGATION = {
     dropdown_menus : [],
     
     init : function () {
+        NAVIGATION.initSearchBar();
         NAVIGATION.initMobileMenu();
         NAVIGATION.initDropdownMenus();
+    },
+    
+    search_bar : null,
+    search_bar_input : null,
+    open_search_bar_btn : null,
+    initSearchBar : function () {
+        
+        // detect the search bar element
+        NAVIGATION.search_bar = document.getElementById('search-bar');
+        NAVIGATION.search_bar_input = NAVIGATION.search_bar.getElementsByClassName('input')[0];
+        
+        // make it possible to close the search bar popup
+        NAVIGATION.search_bar.getElementsByClassName('overlay')[0].addEventListener('click', function (e) {
+            document.documentElement.classList.remove('search-bar-is-open');
+            NAVIGATION.search_bar.classList.remove('show');
+            NAVIGATION.open_search_bar_btn.focus();
+        });
+        NAVIGATION.search_bar.getElementsByClassName('close-btn')[0].addEventListener('click', function (e) {
+            document.documentElement.classList.remove('search-bar-is-open');
+            NAVIGATION.search_bar.classList.remove('show');
+            NAVIGATION.open_search_bar_btn.focus();
+        });
+        
+        // open the search bar with the click of a button
+        NAVIGATION.open_search_bar_btn = document.getElementById('open-search-btn');
+        NAVIGATION.open_search_bar_btn.addEventListener('click', function (e) {
+            document.documentElement.classList.add('search-bar-is-open');
+            NAVIGATION.search_bar.classList.add('show');
+            NAVIGATION.search_bar_input.focus();
+        });
     },
     
     initMobileMenu : function () {
@@ -82,7 +113,7 @@ var NAVIGATION = {
         
         // add event to overlay in the mobile navigation
         var nav = document.getElementById('nav');
-        document.getElementsByClassName('overlay', nav)[0].addEventListener('click', function (e) {
+        nav.getElementsByClassName('overlay')[0].addEventListener('click', function (e) {
             document.documentElement.classList.remove('nav-is-open');
         });
         
