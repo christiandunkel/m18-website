@@ -27,9 +27,9 @@ const OUTPUT_PATH = _.path.join(__dirname, '..', 'app.min.js');
 
 
 /*
- * ================
- * PUBLIC FUNCTIONS
- * ================
+ * ====
+ * MAIN
+ * ====
  */
             
 if (!_.fs.existsSync(INPUT_PATH) || !_.fs.statSync(INPUT_PATH).isFile()) {

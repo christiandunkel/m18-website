@@ -64,7 +64,7 @@
                 display: inline-block; vertical-align: middle;
             }
 
-            .language-selection {
+            #language-selection {
                 list-style: none;
                 text-align: left;
 
@@ -83,29 +83,6 @@
 
                     &:last-child {
                         margin-right: 0;
-                    }
-
-                    .lang-select-btn {
-                        min-width: 12rem; padding: .5rem 1rem;
-                        border: .3rem solid transparent;
-                        font-size: 2.2rem; font-weight: normal; text-align: center;
-                        @include border-radius(.3rem);
-
-                        &:hover,
-                        &:focus {
-                            border-color: $color-main;
-                        }
-
-                        html[lang="de"] &[set-lang="de"],
-                        html[lang="en"] &[set-lang="en"] {
-                            background-color: $color-main; cursor: auto;
-                            color: $color-aspect; font-weight: bold;
-
-                            &:hover,
-                            &:focus {
-                                outline: none;
-                            }
-                        }
                     }
                 }
             }
@@ -189,6 +166,39 @@
         
         @include ON_MOBILE {
             display: none;
+        }
+    }
+}
+
+// buttons that toggle the applied language
+.lang-select-btn {
+    display: inline-block;
+    min-width: 12rem; padding: .5rem 1rem;
+    border: .3rem solid transparent;
+    font-size: 2.2rem; font-weight: normal; text-align: center;
+    @include border-radius(.3rem);
+
+    &:hover,
+    &:focus {
+        border-color: $color-main;
+    }
+
+    html[lang="de"] &[set-lang="de"],
+    html[lang="en"] &[set-lang="en"] {
+        background-color: $color-main; cursor: auto;
+        color: $color-aspect; font-weight: bold;
+        
+        &:hover,
+        &:focus {
+            outline: none;
+        }
+    }
+
+    #mobile-language-selection & {
+
+        html[lang="de"] &[set-lang="de"],
+        html[lang="en"] &[set-lang="en"] {
+            border-color: $color-aspect;
         }
     }
 }
@@ -493,6 +503,10 @@
         .dropdown:focus-within {
             @include desktop-dropdown-visible;
         }
+        
+        #mobile-language-selection {
+            display: none !important;
+        }
     }
 
     @include ON_MOBILE {
@@ -610,6 +624,30 @@
                     &:focus {
                         outline: none;
                     }
+                }
+            }
+        }
+        
+        #mobile-language-selection {
+            margin-top: 2.5rem; padding: 1.5rem 0;
+            border-top: .3rem dashed $color-aspect;
+            
+            > span {
+                display: inline-block; vertical-align: middle;
+                margin: 1rem 1.5em 1rem 0;
+                font-size: 2rem; line-height: 1em; color: #898989;
+            }
+            
+            > ul {
+                display: inline-block; vertical-align: middle;
+                list-style: none;
+                margin: 0; padding: 0;
+                font-size: 0; line-height: 0;
+                
+                > li {
+                    display: inline-block;
+                    margin: 1rem 1rem 1rem 0; padding: 0;
+                    font-size: 0; line-height: 0;
                 }
             }
         }
