@@ -263,9 +263,48 @@ var LANGUAGE = {
 
 
 
+// manages everything relating to hidden sections ("spoilers")
+var HIDDEN_SECTIONS = {
+    
+    sections : {},
+    init : function () {
+        
+        // get references to all hidden sections
+        var sections = document.querySelectorAll('[data-hidden-section-id]');
+        for (var i = 0, len = sections.length; i < len; i++) {
+            var section = sections[i];
+            var section_id = section.getAttribute('data-hidden-section-id');
+            HIDDEN_SECTIONS.sections[section_id] = section;
+        }
+        
+        // add events for specific buttons to open specific sections
+        var buttons = document.querySelectorAll('[data-open-hidden-section]');
+        for (var i = 0, len = buttons.length; i < len; i++) {
+            buttons[i].addEventListener('click', function (e) {
+                
+                // get the button
+                // if a child of the button triggered the event, bubble up to the main element
+                var target = _.target(e);
+                while (target && !target.hasAttribute('data-open-hidden-section')) {
+                    target = target.parentElement;
+                }
+                if (!target) {
+                    return;
+                }
+                
+                var section_id = target.getAttribute('data-open-hidden-section');
+                HIDDEN_SECTIONS.sections[section_id].classList.toggle('show');
+            });
+        }
+    }
+};
+
+
+
 /* MAIN */
 
 window.onload = function () {
     NAVIGATION.init();
     LANGUAGE.init();
+    HIDDEN_SECTIONS.init();
 };

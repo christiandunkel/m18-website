@@ -630,11 +630,11 @@
         
         #mobile-language-selection {
             margin-top: 2.5rem; padding: 1.5rem 0;
-            border-top: .3rem dashed $color-aspect;
+            border-top: .3rem dashed #898989;
             
             > span {
                 display: inline-block; vertical-align: middle;
-                margin: 1rem 1.5em 1rem 0;
+                margin: 1rem 1.5em 1rem 1rem;
                 font-size: 2rem; line-height: 1em; color: #898989;
             }
             

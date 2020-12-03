@@ -354,3 +354,62 @@ a, button {
         outline-color: currentColor;
     }
 }
+
+
+
+
+/* HIDDEN SECTIONS */
+
+.open-spoiler {
+    display: inline-block;
+    width: 100%; margin: .3rem 0; padding: .6em 1em;
+    border: .15em solid currentColor;
+    font-size: 1.8rem; line-height: 1.3em; color: $color-main; text-align: left; font-weight: bold;
+    @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
+    @include border-radius(.3rem);
+    
+    &:before {
+        content: '';
+        display: inline-block; vertical-align: baseline;
+        width: 0; height: 0;
+        margin: 0 .4em .1em 0;
+        border-top: .3em solid transparent;
+        border-bottom: .3em solid transparent;
+        border-left: .3em solid currentColor;
+    }
+    
+    &:hover,
+    &:focus {
+        @include main-section-shadow;
+    }
+}
+
+// styled hidden section
+.spoiler {
+    @include main-section-shadow;
+    @include border-radius(.3rem);
+    @include transition(2s);
+    
+    > *:first-child {
+        margin-top: 0 !important;
+    }
+    
+    > *:last-child {
+        margin-bottom: 0 !important;
+    }
+    
+    &.show {
+        margin: .5rem 0 2.5rem 0; padding: 1.5rem;
+    }
+}
+
+// generic hidden section
+*[data-hidden-section-id]:not(.show) {
+    width: 0; height: 0;
+    visibility: hidden; opacity: 0; overflow: hidden;
+    @include transition(.3s, visiblity 0s .3s, overflow 0s .3s);
+}
+
+*[data-hidden-section-id].show {
+    @include transition(.3s, visiblity 0s, overflow 0s);
+}
