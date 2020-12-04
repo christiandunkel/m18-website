@@ -412,7 +412,7 @@
         text-align: center;
 
         .dropdown-indicator {
-            margin-bottom: .4em;
+            position: relative; top: -.3em;
         }
         
         > .main {
