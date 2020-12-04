@@ -310,7 +310,7 @@ body {
 
             &:before {
                 content: counter(ol-counter) ".";
-                margin: 0 .5em;
+                margin: 0 .5em 0 0;
                 color: inherit; font-size: .9em;
             }
         }
