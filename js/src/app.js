@@ -292,6 +292,10 @@ var HIDDEN_SECTIONS = {
                     return;
                 }
                 
+                // toggle the button
+                target.classList.toggle('show');
+                
+                // toggle the section
                 var section_id = target.getAttribute('data-open-hidden-section');
                 HIDDEN_SECTIONS.sections[section_id].classList.toggle('show');
             });

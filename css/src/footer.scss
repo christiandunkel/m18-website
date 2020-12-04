@@ -1,8 +1,8 @@
 #footer {
     @include main-section-shadow;
     width: 100%;
-    background-color: $color-main;
-    color: $color-aspect; text-align: center;
+    background-color: $color-dark;
+    color: $color-light; text-align: center;
     
     .inner {
         display: inline-block;
@@ -12,8 +12,8 @@
         
     .highlight {
         width: 100%;
-        color: $color-main; text-align: center;
-        @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
+        color: $color-dark; text-align: center;
+        @include linear-gradient(45deg, $color-light 0%, $color-light-sub 100%);
 
         $margin-vertical: 1.5rem;
             
@@ -35,16 +35,16 @@
 
             .hashtag {
                 margin: 0 .13em 0.8em; padding: 0 .2em;
-                background-color: $color-main; border: .12em solid transparent;
-                color: $color-aspect; text-decoration: none;
+                background-color: $color-dark; border: .12em solid transparent;
+                color: $color-light; text-decoration: none;
                 @include border-radius(.3rem);
                 @include user-select(none);
 
                 &:hover,
                 &:focus {
                     text-decoration: none;
-                    background-color: transparent; border-color: $color-main;
-                    color: $color-main;
+                    background-color: transparent; border-color: $color-dark;
+                    color: $color-dark;
                 }
             }
         }
@@ -65,7 +65,8 @@
                 a {
                     display: inline-block; position: relative;
                     width: 6.4rem; height: 6.4rem;
-                    color: black;
+                    outline-color: $color-dark;
+                    color: $color-dark;
                     @include border-radius(.5rem);
 
                     > * {
@@ -80,11 +81,10 @@
                         }
                     }
 
-                    &:hover > *,
-                    &:focus > * {
-                        background-color: $color-main;
-                        text-shadow: 0 .1rem .5rem $color-main;
-                        color: $color-aspect;
+                    &:hover,
+                    &:focus {
+                        outline-color: $color-dark-sub;
+                        color: $color-dark-sub;
                     }
                 }
             }
@@ -112,11 +112,11 @@
                 font-size: 2.3rem; line-height: 1.5em;
 
                 a {
-                    font-weight: normal; color: currentColor; text-decoration: none;
+                    color: $color-light; font-weight: normal; text-decoration: none;
 
                     &:hover,
                     &:focus {
-                        text-decoration: underline;
+                        color: $color-light-sub; text-decoration: underline;
                     }
                 }
             }

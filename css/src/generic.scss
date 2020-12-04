@@ -113,7 +113,6 @@ body {
     color: $color-text; font-size: 0;
          
     // disable scrolling in the main page
-    html.nav-is-open &,
     html.search-bar-is-open & {
         max-height: 100%;
         overflow: hidden;
@@ -156,7 +155,7 @@ body {
     
     #aside {
         display: inline-block; vertical-align: top;
-        width: 27.5%; margin-left: 3.49%; padding-left: 3%;
+        width: 30.5%; margin-left: 3.49%; padding-left: 2.5rem;
         border: dashed #e3e3e3; border-width: 0 0 0 .3rem;
     }
     
@@ -241,7 +240,7 @@ body {
         
         thead {
             @extend %table-section;
-            @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
+            @include linear-gradient(45deg, $color-light 0%, $color-light-sub 100%);
         }
         
         tbody {
@@ -363,9 +362,9 @@ a, button {
 .open-spoiler {
     display: inline-block;
     width: 100%; margin: .3rem 0; padding: .6em 1em;
-    border: .15em solid currentColor;
-    font-size: 1.8rem; line-height: 1.3em; color: $color-main; text-align: left; font-weight: bold;
-    @include linear-gradient(45deg, $color-aspect 0%, $color-aspect-sub 100%);
+    border: .15em solid $color-light-sub;
+    font-size: 1.8rem; line-height: 1.3em; color: $color-text; text-align: left; font-weight: bold;
+    @include linear-gradient(45deg, $color-light 0%, $color-light-sub 100%);
     @include border-radius(.3rem);
     
     &:before {
@@ -376,17 +375,24 @@ a, button {
         border-top: .3em solid transparent;
         border-bottom: .3em solid transparent;
         border-left: .3em solid currentColor;
+        @include transition(.3s);
+    }
+    
+    &.show:before {
+        @include transform(rotate(90deg));
     }
     
     &:hover,
     &:focus {
+        color: $color-dark-sub;
         @include main-section-shadow;
     }
 }
 
 // styled hidden section
 .spoiler {
-    @include main-section-shadow;
+    padding: 0 1.2rem;
+    @include box-shadow(0 .1rem .5rem rgba(0,0,0,.2));
     @include border-radius(.3rem);
     @include transition(2s);
     
@@ -399,7 +405,7 @@ a, button {
     }
     
     &.show {
-        margin: .5rem 0 2.5rem 0; padding: 1.5rem;
+        margin: .3rem 0 2.5rem 0; padding: 1.2rem;
     }
 }
 
@@ -407,9 +413,9 @@ a, button {
 *[data-hidden-section-id]:not(.show) {
     width: 0; height: 0;
     visibility: hidden; opacity: 0; overflow: hidden;
-    @include transition(.3s, visiblity 0s .3s, overflow 0s .3s);
+    @include transition(.3s, width 0s .3s, height 0s .3s, visiblity 0s .3s, overflow 0s .3s);
 }
 
 *[data-hidden-section-id].show {
-    @include transition(.3s, visiblity 0s, overflow 0s);
+    @include transition(.3s, width 0s, height 0s, visiblity 0s, overflow 0s);
 }
