@@ -275,6 +275,9 @@ var HIDDEN_SECTIONS = {
             var section = sections[i];
             var section_id = section.getAttribute('data-hidden-section-id');
             HIDDEN_SECTIONS.sections[section_id] = section;
+            
+            // add aria-hidden label
+            HIDDEN_SECTIONS.sections[section_id].setAttribute('aria-hidden', 'true');
         }
         
         // add events for specific buttons to open specific sections
@@ -297,7 +300,9 @@ var HIDDEN_SECTIONS = {
                 
                 // toggle the section
                 var section_id = target.getAttribute('data-open-hidden-section');
-                HIDDEN_SECTIONS.sections[section_id].classList.toggle('show');
+                var section = HIDDEN_SECTIONS.sections[section_id];
+                section.classList.toggle('show');
+                section.setAttribute('aria-hidden', (section.getAttribute('aria-hidden') === 'true' ? 'false' : 'true'));
             });
         }
     }

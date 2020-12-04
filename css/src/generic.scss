@@ -378,12 +378,18 @@ a, button {
         @include transition(.3s);
     }
     
-    &.show:before {
+    &.show:before,
+    html.js-off &:before {
         @include transform(rotate(90deg));
     }
     
-    &:hover,
-    &:focus {
+    html.js-off & {
+        outline: none;
+        cursor: auto;
+    }
+    
+    html.js-on &:hover,
+    html.js-on &:focus {
         color: $color-dark-sub;
         @include main-section-shadow;
     }
@@ -404,13 +410,14 @@ a, button {
         margin-bottom: 0 !important;
     }
     
-    &.show {
+    &.show,
+    html.js-off & {
         margin: .3rem 0 2.5rem 0; padding: 1.2rem;
     }
 }
 
 // generic hidden section
-*[data-hidden-section-id]:not(.show) {
+html:not(.js-off) *[data-hidden-section-id]:not(.show) {
     width: 0; height: 0;
     visibility: hidden; opacity: 0; overflow: hidden;
     @include transition(.3s, width 0s .3s, height 0s .3s, visiblity 0s .3s, overflow 0s .3s);
