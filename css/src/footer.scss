@@ -11,9 +11,9 @@
     }
         
     .highlight {
-        width: 100%;
+        position: relative;
+        width: 100%; margin: 10rem 0;
         color: $color-dark; text-align: center;
-        @include linear-gradient(45deg, $color-light 0%, $color-light-sub 100%);
 
         $margin-vertical: 1.5rem;
             
@@ -26,6 +26,19 @@
                     margin: $margin-vertical 0 0 0;
                 }
             }
+        }
+        
+        // background
+        &:before {
+            content: '';
+            position: absolute; top: -25%; left: -50%; z-index: 1;
+            width: 200%; height: 150%;
+            @include linear-gradient(45deg, $color-light 0%, $color-light-sub 100%);
+            @include transform(rotate(-1.5deg));
+        }
+        
+        .inner {
+            position: relative; z-index: 2;
         }
 
         .slogan {
