@@ -1,8 +1,12 @@
 #header {
     @include main-section-shadow;
-    width: 100%; margin: 0 auto; padding-bottom: .5rem;
+    width: 100%; margin: 0 auto; padding-bottom: .3rem;
     text-align: center;
     @include linear-gradient(45deg, $color-light 0%, $color-light-sub 100%);
+    
+    @include ON_MOBILE {
+        padding: 0;
+    }
     
     
     

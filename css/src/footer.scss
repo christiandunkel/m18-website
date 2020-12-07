@@ -48,16 +48,16 @@
 
             .hashtag {
                 margin: 0 .13em 0.8em; padding: 0 .2em;
-                background-color: $color-dark; border: .12em solid transparent;
-                color: $color-light; text-decoration: none;
+                border: .12em solid $color-dark;
+                color: $color-dark; text-decoration: none;
                 @include border-radius(.3rem);
                 @include user-select(none);
 
                 &:hover,
                 &:focus {
                     text-decoration: none;
-                    background-color: transparent; border-color: $color-dark;
-                    color: $color-dark;
+                    background-color: $color-dark; border-color: transparent;
+                    color: $color-light;
                 }
             }
         }
