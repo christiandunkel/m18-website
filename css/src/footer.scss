@@ -1,32 +1,15 @@
 #footer {
-    @include main-section-shadow;
-    width: 100%;
-    background-color: $color-dark;
-    color: $color-light; text-align: center;
-    
-    .inner {
-        display: inline-block;
-        max-width: $content-width; width: 100%; padding: $content-padding;
-        text-align: left;
-    }
+    width: 100%; padding-top: 10rem;
+    overflow: hidden;
+    text-align: center;
         
     .highlight {
+        @include main-section-shadow;
         position: relative;
-        width: 100%; margin: 10rem 0;
+        width: 100%;
         color: $color-dark; text-align: center;
 
         $margin-vertical: 1.5rem;
-            
-        @media (max-width: 680px) {
-            > .inner {
-                text-align: center;
-
-                .social-media {
-                    float: none;
-                    margin: $margin-vertical 0 0 0;
-                }
-            }
-        }
         
         // background
         &:before {
@@ -38,98 +21,117 @@
         }
         
         .inner {
-            position: relative; z-index: 2;
-        }
+            display: block; position: relative; z-index: 2;
+            max-width: $content-width; width: 100%; margin: 0 auto; padding: $content-padding;
+            text-align: left;
 
-        .slogan {
-            display: inline-block;
-            margin: $margin-vertical 0;
-            font-size: 4rem; line-height: 1.6em; font-weight: bold;
-
-            .hashtag {
-                margin: 0 .13em 0.8em; padding: 0 .2em;
-                border: .12em solid $color-dark;
-                color: $color-dark; text-decoration: none;
-                @include border-radius(.3rem);
-                @include user-select(none);
-
-                &:hover,
-                &:focus {
-                    text-decoration: none;
-                    background-color: $color-dark; border-color: transparent;
-                    color: $color-light;
-                }
-            }
-        }
-
-        .social-media {
-            float: right;
-            margin: $margin-vertical 0 $margin-vertical 6rem;
-
-            > li:first-child {
-                margin-left: 0;
-            }
-
-            li {
-                list-style: none;
+            .slogan {
                 display: inline-block;
-                margin-left: 1.5rem;
+                margin: $margin-vertical 0;
+                font-size: 4rem; line-height: 1.6em; font-weight: bold;
 
-                a {
-                    display: inline-block; position: relative;
-                    width: 6.4rem; height: 6.4rem;
-                    outline-color: $color-dark;
-                    color: $color-dark;
-                    @include border-radius(.5rem);
-
-                    > * {
-                        display: block; position: absolute; top: 50%; left: 50%;
-                        font-size: 0;
-                        @include border-radius(1.25rem);
-                        @include transform(translate(-50%,-50%));
-                        @include transition(.2s);
-
-                        &:before {
-                            font-size: 5rem; line-height: 1em;
-                        }
-                    }
+                .hashtag {
+                    margin: 0 .13em 0.8em; padding: 0 .2em;
+                    border: .12em solid $color-dark;
+                    color: $color-dark; text-decoration: none;
+                    @include border-radius(.3rem);
+                    @include user-select(none);
 
                     &:hover,
                     &:focus {
-                        outline-color: $color-dark-sub;
-                        color: $color-dark-sub;
+                        background-color: $color-dark; border-color: transparent; outline-color: $color-dark;
+                        color: $color-light; text-decoration: none;
                     }
+                }
+            }
+
+            .social-media {
+                float: right;
+                margin: $margin-vertical 0 $margin-vertical 6rem;
+
+                > li:first-child {
+                    margin-left: 0;
+                }
+
+                li {
+                    list-style: none;
+                    display: inline-block;
+                    margin-left: 1.5rem;
+
+                    a {
+                        display: inline-block; position: relative;
+                        width: 6.4rem; height: 6.4rem;
+                        outline-color: $color-dark;
+                        color: $color-dark;
+                        @include border-radius(.5rem);
+
+                        > * {
+                            display: block; position: absolute; top: 50%; left: 50%;
+                            font-size: 0;
+                            @include border-radius(1.25rem);
+                            @include transform(translate(-50%,-50%));
+                            @include transition(.2s);
+
+                            &:before {
+                                font-size: 5rem; line-height: 1em;
+                            }
+                        }
+
+                        &:hover,
+                        &:focus {
+                            outline-color: $color-dark-sub;
+                            color: $color-dark-sub;
+                        }
+                    }
+                }
+            }
+            
+            @media (max-width: 800px) {
+                text-align: center;
+
+                .social-media {
+                    float: none;
+                    margin: $margin-vertical 0 0 0;
                 }
             }
         }
     }
-        
-    .links {
+    
+    .background {
+        padding-top: 10rem;
+        background-color: $color-dark;
+        color: $color-light; 
 
-        > .list:last-child {
-            margin-right: 0;
-        }
+        .links {
+            display: block;
+            max-width: $content-width; width: 100%; margin: 0 auto; padding: $content-padding;
+            text-align: left;
 
-        .list {
-            display: inline-block; vertical-align: top;
-            margin: 4rem 7rem 4rem 0; padding-left: 2rem;
-
-            .headline {
-                list-style: none;
-                margin-bottom: .5em;
-                font-size: 3rem; line-height: 1.5em; font-weight: bold;
+            > .list:last-child {
+                margin-right: 0;
             }
 
-            .link {
-                padding: .1em 0;
-                font-size: 2.3rem; line-height: 1.5em;
+            .list {
+                display: inline-block; vertical-align: top;
+                margin: 4rem 7rem 4rem 0; padding-left: 2rem;
 
-                a {
-                    color: $color-light; font-weight: normal; text-decoration: none;
+                .headline {
+                    list-style: none;
+                    margin-bottom: .5em;
+                    font-size: 3rem; line-height: 1.5em; font-weight: bold;
+                }
 
-                    &:hover,
-                    &:focus {
-                        color: $color-light-sub; text-decoration: underline;
+                .link {
+                    padding: .1em 0;
+                    font-size: 2.3rem; line-height: 1.5em;
+
+                    a {
+                        color: $color-light; font-weight: normal; text-decoration: none;
+
+                        &:hover,
+                        &:focus {
+                            color: $color-light-sub; text-decoration: underline;
+                        }
                     }
                 }
             }
