@@ -458,8 +458,7 @@
             position: absolute;
             max-width: 30rem; min-width: 25rem; width: 0; max-height: 40rem; height: 0; padding: 0;
             visibility: hidden; opacity: 0;
-            overflow: hidden;
-            @include linear-gradient(135deg, $color-light 0%, $color-light-sub 100%);
+            background-color: $color-light; overflow: hidden;
             @include transition(0s .2s, opacity 0s);
 
             &.depth-1 {
