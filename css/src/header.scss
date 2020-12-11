@@ -1,8 +1,8 @@
 #header {
     @include main-section-shadow;
     width: 100%; margin: 0 auto; padding-bottom: .3rem;
+    background-color: $color-light;
     text-align: center;
-    @include linear-gradient(45deg, $color-light 0%, $color-light-sub 100%);
     
     @include ON_MOBILE {
         padding: 0;
@@ -20,9 +20,8 @@
         .logo {
             display: inline-block;
             padding: .55rem .8rem;
-            border: .4rem solid $color-dark;
+            border-bottom: .3rem solid $color-dark;
             color: $color-dark; text-decoration: none; font-weight: bold;
-            @include border-radius(.3rem);
             @include user-select(none);
             
             > * {
@@ -46,6 +45,7 @@
                 &:focus {
                     background-color: $color-dark; border-color: transparent; outline-color: $color-dark;
                     color: $color-light; text-decoration: none;
+                    @include border-radius(.3rem);
                 }
             }
         }
@@ -337,7 +337,7 @@
                 border-color: white;
                 outline-style: dashed;
                 outline-offset: .6rem;
-                outline-width: .4rem;
+                outline-width: 1px;
                 outline-color: white;
             }
             
@@ -429,7 +429,7 @@
                     font-size: 0; line-height: 1em; color: $color-light; text-decoration: none;
 
                     > * {
-                        font-size: 2.4rem; line-height: 1em;
+                        font-size: 2rem; line-height: 1em;
                     }
                     
                     &:hover,

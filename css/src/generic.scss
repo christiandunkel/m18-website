@@ -240,7 +240,7 @@ body {
         
         thead {
             @extend %table-section;
-            @include linear-gradient(45deg, $color-light 0%, $color-light-sub 100%);
+            background-color: $color-light;
         }
         
         tbody {
@@ -259,7 +259,7 @@ body {
             // headline
             th {
                 @extend %table-cell;
-                text-align: left; font-weight: bold; letter-spacing: .01em;
+                text-align: left; letter-spacing: .01em;
                 font-size: 2rem; line-height: 1.4em;
             }
 
@@ -324,22 +324,13 @@ body {
         position: relative;
         padding: .1em .2em;
         text-shadow: .05rem .05rem .2rem $color-link-shadow;
-        color: #ffffff; font-weight: bold; text-decoration: none;
-        
-        @include linear-gradient(90deg, $color-link-1 0%, $color-link-2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
-        -webkit-text-decoration-color: #fff !important;
-        text-decoration-color: #fff !important;
+        color: $color-link; font-weight: bold; text-decoration: none;
         @include transition(.15s);
 
         &:hover,
         &:focus {
             text-shadow: .05rem .05rem .2rem $color-link-shadow-hover;
-            color: #ffffff; text-decoration: underline;
-            outline-color: $color-link-1;
+             text-decoration: underline;
         }
     }
 }
@@ -347,7 +338,7 @@ body {
 a, button {
 
     &:focus {
-        outline-width: .3rem;
+        outline-width: 1px;
         outline-offset: .1rem;
         outline-style: dashed;
         outline-color: currentColor;
@@ -362,16 +353,15 @@ a, button {
 .open-spoiler {
     display: inline-block;
     width: 100%; margin: .3rem 0; padding: .6em 1em;
-    border: .15em solid $color-light-sub;
-    font-size: 1.8rem; line-height: 1.3em; color: $color-text; text-align: left; font-weight: bold;
-    @include linear-gradient(45deg, $color-light 0%, $color-light-sub 100%);
+    background-color: $color-light; border: 1px solid $color-light-sub;
+    font-size: 1.8rem; line-height: 1.3em; color: $color-text; text-align: left;
     @include border-radius(.3rem);
     
     &:before {
         content: '';
         display: inline-block; vertical-align: baseline;
         width: 0; height: 0;
-        margin: 0 .4em .1em 0;
+        margin: 0 .7em .1em 0;
         border-top: .3em solid transparent;
         border-bottom: .3em solid transparent;
         border-left: .3em solid currentColor;
@@ -390,7 +380,7 @@ a, button {
     
     html.js-on &:hover,
     html.js-on &:focus {
-        color: $color-dark-sub;
+        background-color: $color-light-sub;
         @include main-section-shadow;
     }
 }
