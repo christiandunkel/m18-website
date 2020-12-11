@@ -19,8 +19,7 @@
     
         .logo {
             display: inline-block;
-            padding: .55rem .8rem;
-            border-bottom: .3rem solid $color-dark;
+            padding: .6rem .8rem;
             color: $color-dark; text-decoration: none; font-weight: bold;
             @include user-select(none);
             
@@ -36,14 +35,14 @@
             }
             
             .text {
-                font-size: 2.8rem; line-height: .8em;
+                font-size: 3.8rem; line-height: .78em;
             }
 
             @include ON_DESKTOP {
 
                 &:hover,
                 &:focus {
-                    background-color: $color-dark; border-color: transparent; outline-color: $color-dark;
+                    background-color: $color-dark; outline-color: $color-dark;
                     color: $color-light; text-decoration: none;
                     @include border-radius(.3rem);
                 }

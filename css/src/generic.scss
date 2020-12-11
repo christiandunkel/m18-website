@@ -350,59 +350,89 @@ a, button {
 
 /* HIDDEN SECTIONS */
 
-.open-spoiler {
-    display: inline-block;
-    width: 100%; margin: .3rem 0; padding: .6em 1em;
-    background-color: $color-light; border: 1px solid $color-light-sub;
-    font-size: 1.8rem; line-height: 1.3em; color: $color-text; text-align: left;
+.spoiler-menu {
+    margin: 4rem 0;
+    overflow: hidden;
+    @include box-shadow(
+        0 0 .5rem rgba(0,0,0,.08),
+        0 .3rem .4rem rgba(0,0,0,.15)
+    );
     @include border-radius(.3rem);
     
-    &:before {
-        content: '';
-        display: inline-block; vertical-align: baseline;
-        width: 0; height: 0;
-        margin: 0 .7em .1em 0;
-        border-top: .3em solid transparent;
-        border-bottom: .3em solid transparent;
-        border-left: .3em solid currentColor;
-        @include transition(.3s);
-    }
+    $spoiler-padding: .9em 1.2em;
     
-    &.show:before,
-    html.js-off &:before {
-        @include transform(rotate(90deg));
-    }
-    
-    html.js-off & {
-        outline: none;
-        cursor: auto;
-    }
-    
-    html.js-on &:hover,
-    html.js-on &:focus {
-        background-color: $color-light-sub;
+    .spoiler-headline {
+        margin: 0 0 .5rem 0; padding: $spoiler-padding;
+        background-color: $color-light;
+        font-size: 1.8rem; line-height: 1.3em; color: $color-text; font-weight: bold;
         @include main-section-shadow;
     }
-}
 
-// styled hidden section
-.spoiler {
-    padding: 0 1.2rem;
-    @include box-shadow(0 .1rem .5rem rgba(0,0,0,.2));
-    @include border-radius(.3rem);
-    @include transition(2s);
-    
-    > *:first-child {
-        margin-top: 0 !important;
+    .open-spoiler {
+        display: inline-block;
+        width: 100%; margin: 0; padding: $spoiler-padding;
+        border: 1px solid transparent;
+        font-size: 1.8rem; line-height: 1.3em; color: $color-text; text-align: left;
+
+        &:before {
+            content: '';
+            display: inline-block; vertical-align: baseline;
+            width: 0; height: 0;
+            margin: 0 .7em .1em 0;
+            border-top: .3em solid transparent;
+            border-bottom: .3em solid transparent;
+            border-left: .3em solid currentColor;
+            @include transition(.3s);
+        }
+
+        html.js-on & {
+
+            &:not(.show):hover,
+            &:not(.show):focus {
+                background-color: rgba(0,0,0,.06);
+            }
+        }
+
+        &.show,
+        html.js-off & {
+
+            &,
+            &:hover,
+            &:focus {
+                background-color: $color-light-sub;
+                @include box-shadow(0 .2rem .5rem rgba(0,0,0,.1));
+            }
+
+            &:before {
+                @include transform(rotate(90deg));
+            }
+        }
+
+        html.js-off & {
+            outline: none;
+            cursor: auto;
+        }
     }
-    
-    > *:last-child {
-        margin-bottom: 0 !important;
-    }
-    
-    &.show,
-    html.js-off & {
-        margin: .3rem 0 2.5rem 0; padding: 1.2rem;
+
+    // styled hidden section
+    .spoiler {
+        display: block;
+        width: 86%; margin: 0 auto;
+        @include transition(2s);
+
+        > *:first-child {
+            margin-top: 0 !important;
+        }
+
+        > *:last-child {
+            margin-bottom: 0 !important;
+        }
+
+        &.show,
+        html.js-off & {
+            margin: .3rem auto 2.5rem auto; padding: 1.2rem 0;
+            border-bottom: .2rem solid #f2f2f2;
+        }
     }
 }
 
