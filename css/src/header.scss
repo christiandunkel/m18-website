@@ -593,7 +593,7 @@
             overflow: hidden;
             
             &.depth-1 {
-                @include linear-gradient(135deg, $color-light 0%, $color-light-sub 100%);
+                background-color: $color-light;
                 
                 a {
                     color: $color-dark;
