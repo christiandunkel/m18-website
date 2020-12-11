@@ -32,15 +32,15 @@
 
                 .m18 {
                     margin: 0 .13em 0.8em; padding: 0 .2em;
-                    border: .12em solid $color-dark;
-                    color: $color-dark; text-decoration: none;
+                    background-color: $color-dark; border: .12em solid transparent;
+                    color: $color-light; text-decoration: none;
                     @include border-radius(.3rem);
                     @include user-select(none);
 
                     &:hover,
                     &:focus {
-                        background-color: $color-dark; border-color: transparent; outline-color: $color-dark;
-                        color: $color-light; text-decoration: none;
+                        background-color: transparent; border-color: $color-dark; outline-color: $color-dark;
+                        color: $color-dark; text-decoration: none;
                     }
                 }
             }
@@ -131,6 +131,7 @@
                     font-size: 1.9rem; line-height: 1.4em;
 
                     a {
+                        display: inline-block;
                         padding: .05em .25em;
                         color: $color-light; font-weight: normal; text-decoration: none;
 
