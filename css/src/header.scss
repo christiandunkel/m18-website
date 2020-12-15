@@ -12,14 +12,14 @@
     
     /* LOGO */
     
-    .highlight {
+    .top-menu {
         display: inline-block; position: relative;
         max-width: $content-width + 150; width: 100%; padding: $header-padding;
         text-align: left;
     
         .logo {
-            display: inline-block;
-            padding: .6rem .8rem;
+            display: inline-block; vertical-align: middle;
+            margin-right:  2rem; padding: 1.05rem .8rem;
             color: $color-dark; text-decoration: none; font-weight: bold;
             @include user-select(none);
             
@@ -53,7 +53,7 @@
         
         .right-menu {
             float: right;
-            margin: .5rem 0 0 4rem;
+            margin: 1rem 0 0 4rem;
             
             @include ON_MOBILE {
                 position: absolute; top: 50%; right: $header-padding;
@@ -89,7 +89,7 @@
             }
 
             #open-search-btn {
-                margin-left: 5rem; padding: .4rem;
+                margin-left: 4rem; padding: .4rem;
                 color: $color-dark; font-size: 0; line-height: 1em;
                 @include border-radius(.3rem);
                 
@@ -167,6 +167,66 @@
         @include ON_MOBILE {
             display: none;
         }
+    }
+}
+ 
+// buttons that change to the page of the right university
+.uni-change-btn {
+    display: inline-block; vertical-align: middle;
+    padding: .6rem;
+    border: .15rem solid currentColor;
+    color: $color-dark; text-decoration: none; text-align: center; font-size: 0; line-height: 0;
+    @include border-radius(.3rem);
+    @include user-select(none);
+    
+    // top menu (on desktop)
+    #header & {
+        margin-left: 1rem;
+
+        @include ON_MOBILE {
+            display: none;
+        }
+    }
+    
+    // navigation menu (on mobile)
+    #mobile-university-selection & {
+        margin-right: .8rem; padding: .5rem 1rem;
+        border-color: transparent; border-width: .32rem;
+        color: $color-light;
+        
+        &.active {
+            border-color: currentColor;
+        }
+        
+        .sub {
+            font-size: 1.4rem;
+        }
+        
+        @include ON_DESKTOP {
+            display: none;
+        }
+    }
+
+    .main {
+        display: inline-block;
+        margin-bottom: .3rem;
+        font-size: 2.6rem; line-height: 1em; letter-spacing: .02em; font-weight: bold;
+    }
+
+    .sub {
+        display: inline-block;
+        font-size: 1.1rem; line-height: 1em;
+    }
+
+    &:hover,
+    &:focus {
+        color: $color-dark-sub;
+    }
+
+    &.active {
+        pointer-events: none; cursor: auto;
+        background-color: $color-dark; border-color: $color-light;
+        color: $color-light;
     }
 }
 
@@ -540,11 +600,13 @@
                 list-style: none;
                 margin: 1rem 0;
 
-                > a {
+                > a:not(.uni-change-btn) {
                     display: inline-block; position: relative; z-index: 1;
                     width: 100%; padding: 2rem 1.8rem;
                     font-size: 2.5rem; line-height: 1em; font-weight: bold; color: $color-light; text-decoration: none;
+                }
 
+                a {
                     &:hover,
                     &:focus {
                         outline: none;
@@ -627,19 +689,22 @@
         }
         
         #mobile-language-selection {
-            margin-top: 2.5rem; padding: 1.5rem 0;
-            border-top: .3rem dashed #898989;
+            margin: 2.5rem 0; padding: 1.5rem 0;
+            border: dashed #898989; border-width: .3rem 0;
+        }
+        
+        #mobile-language-selection,
+        #mobile-university-selection {
             
             > span {
                 display: inline-block; vertical-align: middle;
-                margin: 1rem 1.5em 1rem 1rem;
-                font-size: 2rem; line-height: 1em; color: #898989;
+                min-width: 14rem; margin: 1rem 0 1rem 1rem;
+                font-size: 2rem; line-height: 1em; color: #898989; text-align: left;
             }
             
             > ul {
-                display: inline-block; vertical-align: middle;
-                list-style: none;
-                margin: 0; padding: 0;
+                display: inline-block; vertical-align: middle; list-style: none;
+                margin: 0 0 0 1rem; padding: 0;
                 font-size: 0; line-height: 0;
                 
                 > li {
