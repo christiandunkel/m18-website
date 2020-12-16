@@ -102,7 +102,7 @@
         background-color: $color-dark;
         color: $color-light; 
 
-        .links {
+        .bottom-section {
             display: block;
             max-width: $content-width; width: 100%; margin: 0 auto; padding: $content-padding;
             text-align: left;
@@ -110,24 +110,28 @@
             > .list:last-child {
                 margin-right: 0;
             }
-
-            .list {
-                display: inline-block; vertical-align: top;
+            
+            %list-style {
+                display: inline-block; vertical-align: top; list-style: none;
                 margin: 4rem 7rem 4rem 0; padding: 0;
 
                 li {
+                    display: block;
+                    margin: .6em 0;
                     padding: 0;
-                    list-style: none;
                 }
                 
                 .headline {
                     list-style: none;
-                    margin-bottom: .5em;
+                    margin: 0;
                     font-size: 3rem; line-height: 1.5em; font-weight: bold;
                 }
+            }
 
-                .link {
-                    margin: .6em 0;
+            .list {
+                @extend %list-style;
+
+                > li {
                     font-size: 1.9rem; line-height: 1.4em;
 
                     a {
@@ -138,6 +142,49 @@
                         &:hover,
                         &:focus {
                             color: $color-light-sub; text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        
+            #language-selection {
+                @extend %list-style;
+                padding: 2rem 4rem;
+                border: .3rem dashed #8e8e8e;
+                
+                > li {
+                    text-align: center;
+                    font-size: 1.8rem;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    // buttons that toggle the applied language
+                    .lang-select-btn {
+                        display: inline-block;
+                        min-width: 12rem; padding: .5rem 1rem;
+                        color: $color-light; font-size: 2.2rem; font-weight: normal; text-align: center;
+                        @include border-radius(.3rem);
+
+                        &:hover,
+                        &:focus {
+                            text-decoration: underline;
+                        }
+
+                        html[lang="de"] &[data-set-language="de"],
+                        html[lang="en"] &[data-set-language="en"] {
+                            background-color: $color-light; cursor: auto;
+                            color: $color-dark; text-decoration: none;
+
+                            &:hover,
+                            &:focus {
+                                outline: none;
+                            }
                         }
                     }
                 }

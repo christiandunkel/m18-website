@@ -218,7 +218,7 @@ var LANGUAGE = {
                 
                 // determine language to be set
                 var target = _.target(e);
-                var lang = target.getAttribute('set-lang');
+                var lang = target.getAttribute('data-set-language');
                 
                 LANGUAGE.set(lang);
             });
@@ -249,7 +249,7 @@ var LANGUAGE = {
         for (var i = 0, len = LANGUAGE.buttons.length; i < len; i++) {
             
             var btn = LANGUAGE.buttons[i];
-            var lang_ = btn.getAttribute('set-lang');
+            var lang_ = btn.getAttribute('data-set-language');
             
             if (lang === lang_) {
                 btn.setAttribute('tabindex', '-1');

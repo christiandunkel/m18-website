@@ -53,42 +53,16 @@
         
         .right-menu {
             float: right;
-            margin: 1rem 0 0 4rem;
+            margin: .5rem 0 0 4rem;
             
             @include ON_MOBILE {
                 position: absolute; top: 50%; right: $header-padding;
                 margin: 0;
                 @include transform(translate(0, -50%));
             }
-            
-            > * {
-                display: inline-block; vertical-align: middle;
-            }
-
-            #language-selection {
-                list-style: none;
-                text-align: left;
-
-                @include ON_MOBILE {
-                    display: none;
-                }
-
-                > li {
-                    display: inline-block;
-                    margin: 0 .7rem;
-                    font-size: 1.8rem;
-
-                    &:first-child {
-                        margin-left: 0;
-                    }
-
-                    &:last-child {
-                        margin-right: 0;
-                    }
-                }
-            }
 
             #open-search-btn {
+                display: inline-block; vertical-align: middle;
                 margin-left: 4rem; padding: .4rem;
                 color: $color-dark; font-size: 0; line-height: 1em;
                 @include border-radius(.3rem);
@@ -174,14 +148,18 @@
 .uni-change-btn {
     display: inline-block; vertical-align: middle;
     padding: .6rem;
-    border: .15rem solid currentColor;
-    color: $color-dark; text-decoration: none; text-align: center; font-size: 0; line-height: 0;
+    font-size: 1.7rem; line-height: 1.2em; font-weight: bold;
+    color: $color-dark; text-decoration: none; text-align: center;
     @include border-radius(.3rem);
     @include user-select(none);
     
+    .fl {
+        font-size: .8em; letter-spacing: normal;
+    }
+    
     // top menu (on desktop)
     #header & {
-        margin-left: 1rem;
+        margin-right: 1rem;
 
         @include ON_MOBILE {
             display: none;
@@ -191,11 +169,11 @@
     // navigation menu (on mobile)
     #mobile-university-selection & {
         margin-right: .8rem; padding: .5rem 1rem;
-        border-color: transparent; border-width: .32rem;
         color: $color-light;
         
         &.active {
-            border-color: currentColor;
+            background-color: $color-light;
+            color: $color-dark;
         }
         
         .sub {
@@ -207,17 +185,6 @@
         }
     }
 
-    .main {
-        display: inline-block;
-        margin-bottom: .3rem;
-        font-size: 2.6rem; line-height: 1em; letter-spacing: .02em; font-weight: bold;
-    }
-
-    .sub {
-        display: inline-block;
-        font-size: 1.1rem; line-height: 1em;
-    }
-
     &:hover,
     &:focus {
         color: $color-dark-sub;
@@ -227,48 +194,6 @@
         pointer-events: none; cursor: auto;
         background-color: $color-dark; border-color: $color-light;
         color: $color-light;
-    }
-}
-
-// buttons that toggle the applied language
-.lang-select-btn {
-    display: inline-block;
-    min-width: 12rem; padding: .5rem 1rem;
-    border: .3rem solid transparent;
-    color: $color-dark; font-size: 2.2rem; font-weight: normal; text-align: center;
-    @include border-radius(.3rem);
-
-    &:hover,
-    &:focus {
-        color: $color-dark-sub;
-    }
-
-    html[lang="de"] &[set-lang="de"],
-    html[lang="en"] &[set-lang="en"] {
-        cursor: auto;
-        
-        &:hover,
-        &:focus {
-            outline: none;
-        }
-    }
-    
-    #language-selection & {
-        
-        html[lang="de"] &[set-lang="de"],
-        html[lang="en"] &[set-lang="en"] {
-            background-color: $color-dark;
-            color: $color-light;
-        }
-    }
-
-    #mobile-language-selection & {
-        color: $color-light;
-
-        html[lang="de"] &[set-lang="de"],
-        html[lang="en"] &[set-lang="en"] {
-            border-color: $color-light;
-        }
     }
 }
 
@@ -567,10 +492,6 @@
         .dropdown:focus-within {
             @include desktop-dropdown-visible;
         }
-        
-        #mobile-language-selection {
-            display: none !important;
-        }
     }
 
     @include ON_MOBILE {
@@ -688,12 +609,6 @@
             }
         }
         
-        #mobile-language-selection {
-            margin: 2.5rem 0; padding: 1.5rem 0;
-            border: dashed #898989; border-width: .3rem 0;
-        }
-        
-        #mobile-language-selection,
         #mobile-university-selection {
             
             > span {
