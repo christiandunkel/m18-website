@@ -149,11 +149,8 @@
         
             #language-selection {
                 @extend %list-style;
-                padding: 2rem 4rem;
-                border: .3rem dashed #8e8e8e;
                 
                 > li {
-                    text-align: center;
                     font-size: 1.8rem;
 
                     &:first-child {
