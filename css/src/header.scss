@@ -64,6 +64,7 @@
             #open-search-btn {
                 display: inline-block; vertical-align: middle;
                 margin-left: 4rem; padding: .4rem;
+                border: .2rem solid transparent;
                 color: $color-dark; font-size: 0; line-height: 1em;
                 @include border-radius(.3rem);
                 
@@ -74,6 +75,7 @@
                 @include ON_DESKTOP {
                     &:hover,
                     &:focus {
+                        border-color: currentColor;
                         color: $color-dark-sub;
                     }
                 }
@@ -148,10 +150,15 @@
 .uni-change-btn {
     display: inline-block; vertical-align: middle;
     padding: .6rem;
-    font-size: 1.7rem; line-height: 1.2em; font-weight: bold;
-    color: $color-dark; text-decoration: none; text-align: center;
+    border: .2rem solid transparent;
+    font-size: 1.7rem; line-height: 0;
+    color: $color-dark; font-weight: bold; text-decoration: none; text-align: left;
     @include border-radius(.3rem);
     @include user-select(none);
+    
+    > * {
+        line-height: 1.2em;
+    }
     
     .fl {
         font-size: .8em; letter-spacing: normal;
@@ -176,10 +183,6 @@
             color: $color-dark;
         }
         
-        .sub {
-            font-size: 1.4rem;
-        }
-        
         @include ON_DESKTOP {
             display: none;
         }
@@ -187,6 +190,7 @@
 
     &:hover,
     &:focus {
+        border-color: currentColor;
         color: $color-dark-sub;
     }
 

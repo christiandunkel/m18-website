@@ -165,12 +165,14 @@
                     .lang-select-btn {
                         display: inline-block;
                         min-width: 12rem; padding: .5rem 1rem;
+                        border: .2rem solid transparent;
                         color: $color-light; font-size: 2.2rem; font-weight: normal; text-align: center;
                         @include border-radius(.3rem);
 
                         &:hover,
                         &:focus {
-                            text-decoration: underline;
+                            border-color: currentColor;
+                            text-decoration: none;
                         }
 
                         html[lang="de"] &[data-set-language="de"],
